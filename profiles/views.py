@@ -1,8 +1,9 @@
 from rest_framework import generics
-#from drf_api.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from .models import Profile
 from .serializers import ProfileSerializer
 from drf_api.permissions import IsOwnerOnly
+from rest_framework import permissions
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """ Retrieve & Update a user's profile.
@@ -13,4 +14,4 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
-    permission_classes = [IsOwnerOnly]
+    permission_classes = [IsOwnerOnly, IsAuthenticated]
