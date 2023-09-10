@@ -7,7 +7,15 @@ from drf_api.permissions import IsOwnerOnly
 
 class HabitList(generics.ListCreateAPIView):
     serializer_class = HabitSerializer
-    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'title',
+        'description',
+    ]
     filterset_fields = ['frequency']
     ordering_fields = ['frequency', 'created_at']
     permission_classes = [IsAuthenticated, IsOwnerOnly]

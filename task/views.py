@@ -7,7 +7,15 @@ from drf_api.permissions import IsOwnerOnly
 
 class TaskList(generics.ListCreateAPIView):
     serializer_class = TaskSerializer
-    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'title',
+        'description',
+    ]
     filterset_fields = ['priority']
     ordering_fields = ['priority', 'created_at']
     permission_classes = [IsAuthenticated, IsOwnerOnly]
