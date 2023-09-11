@@ -6,6 +6,10 @@
     rgba(142,204,255,1) 51%, rgba(226,186,255,1) 100%);
 }
 
+.Main {
+  padding-top: 200px;
+}
+
 * {
     box-sizing: border-box;
   }
@@ -20,7 +24,7 @@
   }
   
   a:hover i {
-    color: #2142b2;
+    color: #6483e0;
     transition: color ease-in-out 0.3s;
   }
   
@@ -34,5 +38,5 @@
   i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #203fa6;
+    color: #6483e0;
   }
