@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React, { useState} from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -13,9 +13,12 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import axios from "axios";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext"
+
 
 const SignInForm = () => {
+    const setCurrentUser = useSetCurrentUser();
+
     const [signInData, setSignInData] = useState({
         username: '',
         password: '',
@@ -37,7 +40,8 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          await axios.post("/dj-rest-auth/login/", signInData);
+         const {data} = await axios.post("/dj-rest-auth/login/", signInData);
+         setCurrentUser(data.user);
           history.push("/");
         } catch (err) {
           setErrors(err.response?.data);
