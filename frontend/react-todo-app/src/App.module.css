@@ -7,7 +7,7 @@
 }
 
 .Main {
-  padding-top: 200px;
+  padding-top: 80px;
 }
 
 * {
@@ -40,3 +40,21 @@
     transition: color ease-in-out 0.3s;
     color: #6483e0;
   }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  /* scrollbar */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+*::-webkit-scrollbar-thumb {
+  background: #888;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
