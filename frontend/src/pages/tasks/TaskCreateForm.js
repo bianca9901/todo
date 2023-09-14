@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/TaskCreateEditForm.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -66,6 +68,9 @@ const TaskCreateForm = () => {
   };
 
   return (
+    <Card className={styles.Card}>
+    <Card.Body>
+    <h1 className={styles.Header}>new task</h1>
     <Form onSubmit={handleSubmit}>
       {errors.message && <div className="text-danger">{errors.message}</div>}
       <Form.Group>
@@ -137,6 +142,8 @@ const TaskCreateForm = () => {
         Create Task
       </Button>
     </Form>
+    </Card.Body>
+    </Card>
   );
 };
 

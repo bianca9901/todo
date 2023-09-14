@@ -1,0 +1,20 @@
+.Card {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: transparent !important;
+    border: solid white;
+    border-radius: 10%;
+    margin-bottom: 10px;
+  }
+
+  .Header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2142b2;
+  }
