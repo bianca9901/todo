@@ -98,7 +98,7 @@ const SignUpForm = () => {
             ))}
 
             <Button className={`${btnStyles.Button} ${btnStyles.Wide}
-            ${btnStyles.Bright}`} type="submit">
+            ${btnStyles.Green}`} type="submit">
               Sign Up
             </Button>
             {errors.non_field_errors?.map((message, idx) => (

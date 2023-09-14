@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import btnStyles from "../../styles/Button.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -131,7 +132,8 @@ const TaskCreateForm = () => {
           className="form-control"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.Green}
+      ${btnStyles.Wide}`} type="submit">
         Create Task
       </Button>
     </Form>

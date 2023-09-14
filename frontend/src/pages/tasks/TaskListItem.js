@@ -14,12 +14,18 @@ function TaskListItem({ task }) {
           Due Date: {task.due_date}
         </Card.Subtitle>
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Bright}`}
+          className={`${btnStyles.Button} ${btnStyles.Green}`}
           onClick={() => setOpen(!open)}
           aria-controls={`task-details-${task.id}`}
           aria-expanded={open}
         >
           Show Details
+        </Button>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Danger}`}
+          //onClick={handleDeleteClick}
+        >
+          Delete Task
         </Button>
         <Fade in={open}>
           <div id={`task-details-${task.id}`}>

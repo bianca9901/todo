@@ -11,20 +11,8 @@
 
 .Button:hover {
   opacity: 0.8;
-  border-color: transparent;
+  border-color: white;
   cursor: pointer;
-}
-
-.Button:hover:active {
-  background-color: #2ad735c7 !important;
-}
-
-.Button:active {
-  background-color: #2dc037b5 !important;
-}
-
-.Button:focus {
-  background-color: #4dd030bd;
 }
 
 .Wide {
@@ -32,39 +20,32 @@
   width: 100%;
 }
 
-.Blue,
-.BlueOutline:hover,
-.Bright:hover {
-  background-color: #2143b2ae;
+.Danger {
+  background-color: #f0080885;
+  color: rgb(73, 73, 144);
+  font-size: 15px;
+}
+
+.Danger:hover:active {
+  background-color: #d72a2acf !important;
+}
+
+.Danger:hover {
+  background-color: #e00f04d7;
   color: #ffffff;
 }
 
-.BlueOutline,
-.Blue:hover {
-  /* border: 1px solid #2142b2; */
-  background-color: #ffffff;
-  color: #2142b2;
-}
-
-.Black,
-.BlackOutline:hover {
-  /* background-color: #242a3d;
-  color: white; */
-  background-color: #242a3d;
-  color: aliceblue;
-}
-
-.Black:hover,
-.BlackOutline {
-  /* background-color: #dadadf;
-  color: #242a3d;
-  border-color: #242a3d; */
-  background-color: aliceblue;
-  color: #242a3d;
-}
-
-.Bright {
-  background-color: #65ce2dac;
-  color: #335ce4;
+.Green {
+  background-color: #08f04685;
+  color: white;
   font-size: 15px;
+}
+
+.Green:hover:active {
+  background-color: #2ad738df !important;
+}
+
+.Green:hover {
+  background-color: #08e004d7;
+  color: #ffffff;
 }
