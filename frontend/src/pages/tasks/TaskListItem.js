@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ListGroup, Button, Fade } from "react-bootstrap";
+import { Card, Button, Fade } from "react-bootstrap";
 import styles from "../../styles/TaskListItem.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
@@ -7,12 +7,12 @@ function TaskListItem({ task }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <ListGroup.Item>
-        <strong>Title:</strong> {task.title}
-        <br />
-        <strong>Due Date:</strong> {task.due_date}
-        <br />
+    <Card className={styles.Card}>
+      <Card.Body>
+        <Card.Title>{task.title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          Due Date: {task.due_date}
+        </Card.Subtitle>
         <Button
           className={`${btnStyles.Button} ${btnStyles.Bright}`}
           onClick={() => setOpen(!open)}
@@ -32,8 +32,8 @@ function TaskListItem({ task }) {
             <strong>Completed:</strong> {task.completed ? "Yes" : "No"}
           </div>
         </Fade>
-      </ListGroup.Item>
-    </>
+      </Card.Body>
+    </Card>
   );
 }
 
