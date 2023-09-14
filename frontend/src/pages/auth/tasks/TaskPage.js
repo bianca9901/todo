@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useCurrentUser } from "../../../contexts/CurrentUserContext";
+import Nav from "react-bootstrap/Nav";
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
-import appStyles from "../../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../../api/axiosDefaults";
 
 function TaskPage() {
-    const { id } = useParams();
+  const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -29,16 +27,17 @@ function TaskPage() {
   }, [id]);
 
   return (
-    <Row className="h-100">
-    <Col className="py-2 p-0 p-lg-2" lg={8}>
-      <p>Popular profiles for mobile</p>
-      <p>Post component</p>
-      <Container className={appStyles.Content}>Comments</Container>
-    </Col>
-    <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-      Popular profiles for desktop
-    </Col>
-  </Row>
+<Nav justify variant="tabs" defaultActiveKey="/home">
+
+  <Nav.Item>
+    <Nav.Link eventKey="/tasks/create">Tasks</Nav.Link>
+  </Nav.Item>
+  
+  <Nav.Item>
+    <Nav.Link eventKey="link-1">Habits</Nav.Link>
+  </Nav.Item>
+
+</Nav>
 );
 }
 
