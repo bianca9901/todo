@@ -4,10 +4,10 @@ import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { useCurrentUser } from "../../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import { useHistory } from "react-router";
-import { axiosReq } from "../../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const TaskCreateForm = () => {
   const [dueDate, setDueDate] = useState(new Date());
