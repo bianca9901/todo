@@ -1,28 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import React from "react";
 import { ListGroup, Container, Row, Col } from "react-bootstrap";
-import styles from "../../styles/TaskDetail.module.css";
+import styles from "../../styles/TaskListItem.module.css";
 
-function TaskDetail() {
-  const { id } = useParams();
-  const [task, setTask] = useState({});
-  const currentUser = useCurrentUser();
-
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const response = await axiosReq.get(`/task/${id}`);
-        setTask(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    handleMount();
-  }, [id]);
-
+function TaskListItem({ task }) {
   return (
     <Container>
       <Row>
@@ -55,6 +35,7 @@ function TaskDetail() {
   );
 }
 
-export default TaskDetail;
+export default TaskListItem;
+
 
 
