@@ -7,13 +7,15 @@ class Task(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    due_date = models.DateTimeField()
+    due_date = models.DateTimeField(blank=True, null=True)
     completed = models.BooleanField(default=False)
     priority = models.CharField(
         max_length=10,
-        choices=[("Low", "Low"), ("Medium", "Medium"), ("High", "High")]
+        choices=[("Low", "Low"), ("Medium", "Medium"), ("High", "High")],
+        blank=True,
+        null=True
     )
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.title
