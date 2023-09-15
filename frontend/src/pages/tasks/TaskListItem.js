@@ -1,10 +1,23 @@
 import React, { useState } from "react";
-import { Card, Button, Fade } from "react-bootstrap";
+import { Card, Button, Fade, Modal } from "react-bootstrap";
 import styles from "../../styles/TaskListItem.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-function TaskListItem({ task }) {
+function TaskListItem({ task, onDelete }) {
   const [open, setOpen] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+  const handleDeleteClick = () => {
+    //Shows the deletion confirmation modal when "Delete" button is clicked.
+    setShowConfirmationModal(true);//Opens the deletion modal
+  };
+
+  const confirmDelete = () => {
+    //Executes the task deletion when the "Delete" button in the modal is clicked.
+    onDelete(task.id);
+    //Invokes the onDelete function from parent component (TasksAll)
+    setShowConfirmationModal(false); //Closes the deletion modal
+  };
 
   return (
     <Card className={styles.Card}>
@@ -21,12 +34,17 @@ function TaskListItem({ task }) {
         >
           Show Details
         </Button>
+
+
         <Button
+        //Delete button in task item that shows modal
           className={`${btnStyles.Button} ${btnStyles.Danger}`}
-          //onClick={handleDeleteClick}
+          onClick={handleDeleteClick}
         >
-          Delete Task
+          Delete
         </Button>
+
+
         <Fade in={open}>
           <div id={`task-details-${task.id}`}>
             <strong>Priority:</strong> {task.priority}
@@ -39,6 +57,39 @@ function TaskListItem({ task }) {
           </div>
         </Fade>
       </Card.Body>
+
+      <Modal
+        show={showConfirmationModal}
+        onHide={() => setShowConfirmationModal(false)}
+        centered
+        className={styles.FontModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
+        <Modal.Footer>
+
+
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Gray}`}
+            onClick={() => setShowConfirmationModal(false)}
+          >
+            Cancel
+          </Button>
+
+
+          <Button
+          //Delete button in modal that deletes task
+            className={`${btnStyles.Button} ${btnStyles.Danger}`}
+            onClick={confirmDelete}
+          >
+            Delete
+          </Button>
+
+
+        </Modal.Footer>
+      </Modal>
     </Card>
   );
 }

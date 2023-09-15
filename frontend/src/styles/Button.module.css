@@ -49,3 +49,18 @@
   background-color: #08e004d7;
   color: #ffffff;
 }
+
+.Gray {
+  background-color: #6666669d;
+  color: white;
+  font-size: 15px;
+}
+
+.Gray:hover:active {
+  background-color: #636763df !important;
+}
+
+.Gray:hover {
+  background-color: #5f5f5fd7;
+  color: #ffffff;
+}
