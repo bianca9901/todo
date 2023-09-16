@@ -64,3 +64,18 @@
   background-color: #5f5f5fd7;
   color: #ffffff;
 }
+
+.Edit {
+  background-color: #4ec0cf9d;
+  color: white;
+  font-size: 15px;
+}
+
+.Edit:hover:active {
+  background-color: #1758c0df !important;
+}
+
+.Edit:hover {
+  background-color: #0cbce4d7;
+  color: #ffffff;
+}

@@ -43,6 +43,12 @@ function TaskListItem({ task, onDelete }) {
           Delete
         </Button>
 
+        <Button 
+        className={`${btnStyles.Button} ${btnStyles.Edit}`}
+        >
+          Edit
+        </Button>
+
 
         <Fade in={open}>
           <div id={`task-details-${task.id}`}>
