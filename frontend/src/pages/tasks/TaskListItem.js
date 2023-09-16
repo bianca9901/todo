@@ -22,9 +22,9 @@ function TaskListItem({ task, onDelete }) {
   return (
     <Card className={styles.Card}>
       <Card.Body>
-        <Card.Title>{task.title}</Card.Title>
+        <Card.Title className={styles.Header}>{task.title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          Due Date: {task.due_date}
+          <strong>Due Date: {task.due_date}</strong>
         </Card.Subtitle>
         <Button
           className={`${btnStyles.Button} ${btnStyles.Green}`}
@@ -35,9 +35,8 @@ function TaskListItem({ task, onDelete }) {
           Show Details
         </Button>
 
-
         <Button
-        //Delete button in task item that shows modal
+          //Delete button in task item that shows modal
           className={`${btnStyles.Button} ${btnStyles.Danger}`}
           onClick={handleDeleteClick}
         >
@@ -47,6 +46,7 @@ function TaskListItem({ task, onDelete }) {
 
         <Fade in={open}>
           <div id={`task-details-${task.id}`}>
+          <br />
             <strong>Priority:</strong> {task.priority}
             <br />
             <strong>Category:</strong> {task.category}
@@ -54,6 +54,9 @@ function TaskListItem({ task, onDelete }) {
             <strong>Description:</strong> {task.description}
             <br />
             <strong>Completed:</strong> {task.completed ? "Yes" : "No"}
+            <Card.Subtitle className="mb-2 mt-4 text-muted">
+              <strong>Created At: {task.created_at}</strong>
+            </Card.Subtitle>
           </div>
         </Fade>
       </Card.Body>
@@ -69,8 +72,7 @@ function TaskListItem({ task, onDelete }) {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
         <Modal.Footer>
-
-
+          
           <Button
             className={`${btnStyles.Button} ${btnStyles.Gray}`}
             onClick={() => setShowConfirmationModal(false)}
@@ -78,16 +80,13 @@ function TaskListItem({ task, onDelete }) {
             Cancel
           </Button>
 
-
           <Button
-          //Delete button in modal that deletes task
+            //Delete button in modal that deletes task
             className={`${btnStyles.Button} ${btnStyles.Danger}`}
             onClick={confirmDelete}
           >
             Delete
           </Button>
-
-
         </Modal.Footer>
       </Modal>
     </Card>

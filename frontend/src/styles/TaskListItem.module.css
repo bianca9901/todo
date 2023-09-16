@@ -9,3 +9,13 @@
   .FontModal {
     font-family: 'Quicksand', sans-serif;
   }
+
+  .Header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 19px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2142b2;
+  }

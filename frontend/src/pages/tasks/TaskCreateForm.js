@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-//import DatePicker from "react-datepicker";
-//import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/TaskCreateEditForm.module.css";
-//import { format } from 'date-fns';
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import "react-datepicker/dist/react-datepicker.css"
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -22,7 +20,7 @@ const TaskCreateForm = () => {
     description: "",
     priority: "",
     category: "",
-    //due_date: null,
+    due_date: null,
   });
 
   const { title, description, priority, category } = taskData;
@@ -36,16 +34,13 @@ const TaskCreateForm = () => {
     });
   };
 
-  /*
   const handleDateChange = (date) => {
     setDueDate(date);
-    const formattedDate = format(date, 'yyyy-MM-dd HH:mm:ss');
     setTaskData({
       ...taskData,
-      due_date: formattedDate,
+      due_date: date.toISOString(),
     });
   };
-*/
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,7 +50,7 @@ const TaskCreateForm = () => {
     formData.append("description", description);
     formData.append("priority", priority);
     formData.append("category", category);
-    //formData.append("due_date", dueDate);
+    formData.append("due_date", taskData.due_date);
 
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
@@ -116,6 +111,17 @@ const TaskCreateForm = () => {
               name="category"
               value={category}
               onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Due Date</Form.Label>
+            <DatePicker
+              selected={dueDate}
+              onChange={handleDateChange}
+              showTimeSelect
+              dateFormat="yyyy-MM-dd HH:mm"
+              name="due_date"
+              className="form-control"
             />
           </Form.Group>
           <Button
