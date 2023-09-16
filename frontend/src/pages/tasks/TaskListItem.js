@@ -20,11 +20,11 @@ function TaskListItem({ task, onDelete }) {
   };
 
   return (
-    <Card className={styles.Card}>
+    <Card className={`${styles.Card} ${open ? styles.expanded : ''}`}>
       <Card.Body>
         <Card.Title className={styles.Header}>{task.title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          <strong>Due Date: {task.due_date}</strong>
+          <strong>Due Date:</strong> {task.due_date}
         </Card.Subtitle>
         <Button
           className={`${btnStyles.Button} ${btnStyles.Green}`}
@@ -32,7 +32,7 @@ function TaskListItem({ task, onDelete }) {
           aria-controls={`task-details-${task.id}`}
           aria-expanded={open}
         >
-          Show Details
+          {open ? 'Hide Details' : 'Show Details'}
         </Button>
 
         <Button
@@ -55,7 +55,7 @@ function TaskListItem({ task, onDelete }) {
             <br />
             <strong>Completed:</strong> {task.completed ? "Yes" : "No"}
             <Card.Subtitle className="mb-2 mt-4 text-muted">
-              <strong>Created At: {task.created_at}</strong>
+              <strong>Created At:</strong> {task.created_at}
             </Card.Subtitle>
           </div>
         </Fade>
@@ -72,7 +72,7 @@ function TaskListItem({ task, onDelete }) {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
         <Modal.Footer>
-          
+
           <Button
             className={`${btnStyles.Button} ${btnStyles.Gray}`}
             onClick={() => setShowConfirmationModal(false)}

@@ -3,7 +3,13 @@
     border: solid white;
     border-radius: 10%;
     margin-bottom: 10px;
-    width: 50%;
+    width: 40%;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .Card.expanded {
+    height: auto;
   }
 
   .FontModal {
