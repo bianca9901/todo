@@ -6,11 +6,12 @@ import DatePicker from "react-datepicker";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/TaskCreateEditForm.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-const TaskCreateForm = () => {
+function TaskCreateForm() {
+  // State management
   const [dueDate, setDueDate] = useState(new Date());
   const [errors, setErrors] = useState({});
   const history = useHistory();
@@ -26,7 +27,7 @@ const TaskCreateForm = () => {
 
   const { title, description, priority, category } = taskData;
 
-
+  // Handle input changes
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
@@ -34,6 +35,7 @@ const TaskCreateForm = () => {
     });
   };
 
+  // Handle due date changes
   const handleDateChange = (date) => {
     setDueDate(date);
     setTaskData({
@@ -42,6 +44,7 @@ const TaskCreateForm = () => {
     });
   };
 
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -53,8 +56,7 @@ const TaskCreateForm = () => {
     formData.append("due_date", taskData.due_date);
 
     try {
-      const { data } = await axiosReq.post("/tasks/", formData);
-      console.log(data)
+      await axiosReq.post("/tasks/", formData);
       history.push("/my-tasks/");
     } catch (error) {
       console.log(error);
@@ -114,6 +116,10 @@ const TaskCreateForm = () => {
               onChange={handleChange}
             />
           </Form.Group>
+          <small className="text-muted">
+            A due date helps you stay organized! If you don't choose one, we'll
+            set it to today.{" "}
+          </small>
           <Form.Group>
             <Form.Label>Due Date</Form.Label>
             <DatePicker
@@ -135,6 +141,6 @@ const TaskCreateForm = () => {
       </Card.Body>
     </Card>
   );
-};
+}
 
 export default TaskCreateForm;

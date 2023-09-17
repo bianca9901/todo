@@ -11,6 +11,7 @@ import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function TaskEditForm() {
+  // State management
   const [dueDate, setDueDate] = useState(new Date());
   const [errors, setErrors] = useState({});
   const history = useHistory();
@@ -26,14 +27,13 @@ function TaskEditForm() {
 
   const { title, description, priority, category } = taskData;
 
+  // Fetch task data from the server
   useEffect(() => {
     const fetchTaskData = async () => {
       try {
         const { data } = await axiosReq.get(`/task/${id}/`);
         console.log(data);
         const { title, description, priority, category, due_date } = data;
-
-        //Format due_date from API
         const formattedDueDate = new Date(due_date).toISOString();
 
         setTaskData({
@@ -52,6 +52,7 @@ function TaskEditForm() {
     fetchTaskData();
   }, [id]);
 
+  // Handle input changes
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
@@ -59,6 +60,7 @@ function TaskEditForm() {
     });
   };
 
+  // Handle due date changes
   const handleDateChange = (date) => {
     setDueDate(date);
     setTaskData({
@@ -67,6 +69,7 @@ function TaskEditForm() {
     });
   };
 
+  //Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -76,8 +79,6 @@ function TaskEditForm() {
     formData.append("priority", priority);
     formData.append("category", category);
     formData.append("due_date", taskData.due_date);
-
-    console.log("the due_date to be submitted", taskData.due_date);
 
     try {
       await axiosReq.put(`/task/${id}/`, formData);
