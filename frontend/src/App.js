@@ -8,6 +8,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import TaskListItem from "./pages/tasks/TaskListItem";
 import TasksAll from "./pages/tasks/TasksAll";
+import TaskEditForm from "./pages/tasks/TaskEditForm";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/task/create" render ={() => <TaskCreateForm/>}/>
+          <Route exact path="/task/:id/edit" render ={() => <TaskEditForm/>}/>
           <Route exact path="/task/:id" render ={() => <TaskListItem/>}/>
           <Route exact path="/my-tasks/" render ={() => <TasksAll/>}/>
           <Route render={() => <p>Page Not Found!</p>} />

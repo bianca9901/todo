@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -6,15 +6,15 @@ import DatePicker from "react-datepicker";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/TaskCreateEditForm.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import "react-datepicker/dist/react-datepicker.css"
-import { useHistory } from "react-router";
+import "react-datepicker/dist/react-datepicker.css";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-const TaskCreateForm = () => {
+function TaskEditForm() {
   const [dueDate, setDueDate] = useState(new Date());
   const [errors, setErrors] = useState({});
   const history = useHistory();
-  const currentUser = useCurrentUser();
+  const { id } = useParams();
 
   const [taskData, setTaskData] = useState({
     title: "",
@@ -26,6 +26,31 @@ const TaskCreateForm = () => {
 
   const { title, description, priority, category } = taskData;
 
+  useEffect(() => {
+    const fetchTaskData = async () => {
+      try {
+        const { data } = await axiosReq.get(`/task/${id}/`);
+        console.log(data);
+        const { title, description, priority, category, due_date } = data;
+
+        //Format due_date from API
+        const formattedDueDate = new Date(due_date).toISOString();
+
+        setTaskData({
+          title,
+          description,
+          priority,
+          category,
+          due_date: formattedDueDate,
+        });
+        setDueDate(new Date(formattedDueDate));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchTaskData();
+  }, [id]);
 
   const handleChange = (event) => {
     setTaskData({
@@ -52,9 +77,10 @@ const TaskCreateForm = () => {
     formData.append("category", category);
     formData.append("due_date", taskData.due_date);
 
+    console.log("the due_date to be submitted", taskData.due_date);
+
     try {
-      const { data } = await axiosReq.post("/tasks/", formData);
-      console.log(data)
+      await axiosReq.put(`/task/${id}/`, formData);
       history.push("/my-tasks/");
     } catch (error) {
       console.log(error);
@@ -67,7 +93,7 @@ const TaskCreateForm = () => {
   return (
     <Card className={styles.Card}>
       <Card.Body>
-        <h1 className={styles.Header}>new task</h1>
+        <h1 className={styles.Header}>edit task</h1>
         <Form onSubmit={handleSubmit}>
           {errors.message && (
             <div className="text-danger">{errors.message}</div>
@@ -92,7 +118,7 @@ const TaskCreateForm = () => {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Description</Form.Label>
+            <Form.Label>Priority</Form.Label>
             <Form.Control
               as="select"
               name="priority"
@@ -135,6 +161,6 @@ const TaskCreateForm = () => {
       </Card.Body>
     </Card>
   );
-};
+}
 
-export default TaskCreateForm;
+export default TaskEditForm;

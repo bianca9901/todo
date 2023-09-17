@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Button, Fade, Modal } from "react-bootstrap";
 import styles from "../../styles/TaskListItem.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import { Link } from "react-router-dom";
 
 function TaskListItem({ task, onDelete }) {
   const [open, setOpen] = useState(false);
@@ -43,16 +44,13 @@ function TaskListItem({ task, onDelete }) {
           Delete
         </Button>
 
-        <Button 
-        className={`${btnStyles.Button} ${btnStyles.Edit}`}
-        >
-          Edit
+        <Button className={`${btnStyles.Button} ${btnStyles.Edit}`}>
+          <Link to={`/task/${task.id}/edit`}>Edit</Link>
         </Button>
-
 
         <Fade in={open}>
           <div id={`task-details-${task.id}`}>
-          <br />
+            <br />
             <strong>Priority:</strong> {task.priority}
             <br />
             <strong>Category:</strong> {task.category}
@@ -78,7 +76,6 @@ function TaskListItem({ task, onDelete }) {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
         <Modal.Footer>
-
           <Button
             className={`${btnStyles.Button} ${btnStyles.Gray}`}
             onClick={() => setShowConfirmationModal(false)}
