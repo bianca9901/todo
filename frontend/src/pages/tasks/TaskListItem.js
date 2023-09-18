@@ -4,26 +4,47 @@ import styles from "../../styles/TaskListItem.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Link } from "react-router-dom";
 
-function TaskListItem({ task, onDelete }) {
+/* TaskListItem (Child Component):
+- Renders individual task items.
+-Handles the display of task details.
+-Provides options to delete a task.
+-Provides an option to mark a task as completed.
+Manages its own state for:
+- Showing/hiding task details & The deletion confirmation modal. */
+
+function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
   const [open, setOpen] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const handleDeleteClick = () => {
-    //Shows the deletion confirmation modal when "Delete" button is clicked.
-    setShowConfirmationModal(true);//Opens the deletion modal
+    // Shows the deletion confirmation modal when "Delete" button is clicked.
+    setShowConfirmationModal(true); //Opens the deletion modal
   };
 
   const confirmDelete = () => {
-    //Executes the task deletion when the "Delete" button in the modal is clicked.
+    // Executes the task deletion when the "Delete" button in the modal is clicked.
     onDelete(task.id);
-    //Invokes the onDelete function from parent component (TasksAll)
+    // Invokes the onDelete function from parent component (TasksAll)
     setShowConfirmationModal(false); //Closes the deletion modal
   };
 
+  const handleMarkAsCompletedClick = () => {
+    // Invokes the markAsCompleted function from parent component (TaskAll)
+    onMarkAsCompleted(task.id, !task.completed);
+  };
+
   return (
-    <Card className={`${styles.Card} ${open ? styles.expanded : ''}`}>
+    <Card className={`${styles.Card} ${open ? styles.expanded : ""}`}>
       <Card.Body>
-        <Card.Title className={styles.Header}>{task.title}</Card.Title>
+        <Card.Title className={styles.Header}> <i
+            className={
+              task.completed
+                ? "fa-regular fa-circle-check"
+                : "fa-regular fa-circle"
+            }
+            onClick={() => handleMarkAsCompletedClick(task.id, !task.completed)}
+          ></i>{task.title}</Card.Title>
+
         <Card.Subtitle className="mb-2 text-muted">
           <strong>Due Date:</strong> {task.due_date}
         </Card.Subtitle>
@@ -33,7 +54,7 @@ function TaskListItem({ task, onDelete }) {
           aria-controls={`task-details-${task.id}`}
           aria-expanded={open}
         >
-          {open ? 'Hide Details' : 'Show Details'}
+          {open ? "Hide Details" : "Show Details"}
         </Button>
 
         <Button
@@ -59,7 +80,7 @@ function TaskListItem({ task, onDelete }) {
             <br />
             <strong>Completed:</strong> {task.completed ? "Yes" : "No"}
             <Card.Subtitle className="mb-2 mt-4 text-muted">
-              <strong>Created At:</strong> {task.created_at}
+            <strong>Created At:</strong> {task.created_at}
             </Card.Subtitle>
           </div>
         </Fade>
@@ -92,6 +113,7 @@ function TaskListItem({ task, onDelete }) {
           </Button>
         </Modal.Footer>
       </Modal>
+      
     </Card>
   );
 }

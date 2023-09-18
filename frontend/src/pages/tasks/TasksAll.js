@@ -4,6 +4,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import TaskListItem from "./TaskListItem";
 
+/* TaskAll (Parent Component):
+-Fetches and manages the list of tasks.
+-Handles the deletion of tasks.
+-Handles marking tasks as completed. */
+
 function TasksAll() {
   const [tasks, setTasks] = useState([]);
   const currentUser = useCurrentUser();
@@ -22,11 +27,23 @@ function TasksAll() {
   }, []);
 
   const onDelete = async (taskId) => {
-    //This function handles the deletion of a task when called by child component (tasklistitem.)
-    console.log("Delete button clicked")
+    console.log("Delete button clicked");
     try {
-      await axiosReq.delete(`/task/${taskId}/`)
-      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId))
+      await axiosReq.delete(`/task/${taskId}/`);
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const markAsCompleted = async (taskId, completed) => {
+    try {
+      await axiosReq.patch(`/task/${taskId}/`, { completed });
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === taskId ? { ...task, completed } : task
+        )
+      );
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +56,12 @@ function TasksAll() {
           <h2>All Tasks</h2>
           <ListGroup>
             {tasks.map((task) => (
-              <TaskListItem key={task.id} task={task} onDelete={onDelete}/>
+              <TaskListItem
+                key={task.id}
+                task={task}
+                onDelete={onDelete}
+                onMarkAsCompleted={markAsCompleted}
+              />
             ))}
           </ListGroup>
         </Col>
