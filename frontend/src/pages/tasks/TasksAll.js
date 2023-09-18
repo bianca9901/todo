@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container, Row, Col, ListGroup } from "react-bootstrap";
-import TaskListItem from "./TaskListItem";
+import TaskListItem from "../../components/TaskListItem";
+import NavTask from "../../components/NavTask";
 
 /* TaskAll (Parent Component):
 -Fetches and manages the list of tasks.
@@ -51,6 +52,7 @@ function TasksAll() {
 
   return (
     <Container>
+      <NavTask/>
       <Row className="mt-4">
         <Col>
           <h2>All Tasks</h2>

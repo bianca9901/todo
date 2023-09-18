@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Button, Fade, Modal } from "react-bootstrap";
-import styles from "../../styles/TaskListItem.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import styles from "../styles/TaskListItem.module.css";
+import btnStyles from "../styles/Button.module.css";
 import { Link } from "react-router-dom";
 
 /* TaskListItem (Child Component):
