@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, FormControl, Button, Navbar, Nav, NavDropdown, } from 'react-bootstrap';
 import btnStyles from "../styles/Button.module.css";
+import styles from "../styles/NavTask.module.css";
+import { Link } from "react-router-dom";
 
 /*
  * NavTask (Child Component):
@@ -21,38 +23,42 @@ const NavTask = ({ searchQuery, setSearchQuery, onSearch }) => {
     // Handle the search form submission
     event.preventDefault(); 
     onSearch();
-    // Invokes the handleSearch function from parent component (TasksAll)
+    // Invokes the handleSearch function from the parent component (TasksAll)
   };
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand>My Tasks</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <NavDropdown title="Filter by Priority" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">High</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Medium</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Low</NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="Order by" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/4.1">Priority</NavDropdown.Item>
-            <NavDropdown.Item href="#action/4.2">Created At</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Form inline onSubmit={handleFormSubmit}>
-        <FormControl
-          type="text"
-          placeholder="Search"
-          className="mr-sm-2"
-          value={searchQuery}
-          onChange={handleInputChange}
-        />
-        <Button variant="outline-primary" type="submit">
-          Search
+    <Navbar expand="lg" className={styles.Navbar}>
+      <Nav className="mr-auto">
+        <Button className={btnStyles.CreateTask}>
+          <Link to="/task/create">Create New Task</Link>
         </Button>
-      </Form>
-      </Navbar.Collapse>
+      </Nav>
+      <Nav className="ml-auto">
+        <Form inline onSubmit={handleFormSubmit}>
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            value={searchQuery}
+            onChange={handleInputChange}
+            size="sm"
+          />
+          <Button variant="outline-light" type="submit" size="sm">
+            Search
+          </Button>
+        </Form>
+      </Nav>
+      <Nav className="ml-auto">
+        <NavDropdown title="Filter by Priority" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1">High</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">Medium</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Low</NavDropdown.Item>
+        </NavDropdown>
+        <NavDropdown title="Order by" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/4.1">Priority</NavDropdown.Item>
+          <NavDropdown.Item href="#action/4.2">Created At</NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
     </Navbar>
   );
 };

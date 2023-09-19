@@ -1,0 +1,16 @@
+.Navbar {
+    background-color: transparent !important;
+    border: solid white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.Navlink {
+    background-color: aqua;
+}
+
+.Arrow::after {
+    border-top-color: purple !important;
+    background-color: white;
+    color: white;
+}

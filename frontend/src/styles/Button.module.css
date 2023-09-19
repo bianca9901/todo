@@ -79,3 +79,20 @@
   background-color: #0cbce4d7;
   color: #ffffff;
 }
+
+.CreateTask {
+  background-color: #c265f59d;
+  color: white;
+  font-size: 20px;
+  padding: 4px 10px;
+  border-color: #6704e014;
+}
+
+.CreateTask:hover:active {
+  background-color: #904adbdf !important;
+}
+
+.CreateTask:hover {
+  background-color: #925acfaa;
+  color: #ffffff;
+}

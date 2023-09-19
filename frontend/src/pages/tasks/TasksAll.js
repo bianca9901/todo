@@ -83,7 +83,6 @@ function TasksAll() {
       />
       <Row className="mt-4">
         <Col>
-          <h2>All Tasks</h2>
           <ListGroup>
             {filteredTasks.length > 0
               ? filteredTasks.map((task) => (
