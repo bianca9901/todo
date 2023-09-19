@@ -17,7 +17,7 @@ class TaskList(generics.ListCreateAPIView):
         'description',
     ]
     filterset_fields = ['priority']
-    ordering_fields = ['priority', 'created_at']
+    ordering_fields = ['priority', 'created_at', 'due_date']
     permission_classes = [IsAuthenticated, IsOwnerOnly]
     
     def get_queryset(self):

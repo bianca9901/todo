@@ -50,12 +50,22 @@ const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
           <NavDropdown.Item
             onClick={() => handleOrderByChange("created_at")}
           >
-            Created At (Old first)
+            Created At (Ascending)
           </NavDropdown.Item>
           <NavDropdown.Item
             onClick={() => handleOrderByChange("-created_at")}
           >
-            Created At (New first)
+            Created At (Descending)
+          </NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={() => handleOrderByChange("due_date")}
+          >
+            Due Date (Ascending)
+          </NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={() => handleOrderByChange("-due_date")}
+          >
+            Due Date (Descending)
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
