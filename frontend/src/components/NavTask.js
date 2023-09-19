@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormControl, Button, Navbar, Nav, NavDropdown, } from 'react-bootstrap';
+import { FormControl, Button, Navbar, Nav, NavDropdown, } from 'react-bootstrap';
 import btnStyles from "../styles/Button.module.css";
 import styles from "../styles/NavTask.module.css";
 import { Link } from "react-router-dom";
@@ -24,6 +24,7 @@ const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
   };
 
   return (
+    <>
     <Navbar expand="lg" className={styles.Navbar}>
             <Nav className="mr-auto">
         <Button className={btnStyles.CreateTask}>
@@ -34,7 +35,7 @@ const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
           <FormControl
             type="text"
             placeholder="Search"
-            className="mr-sm-2"
+            className={styles.Input}
             value={searchQuery}
             onChange={handleInputChange}
             size="sm"
@@ -68,8 +69,10 @@ const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
             Due Date (Descending)
           </NavDropdown.Item>
         </NavDropdown>
-      </Nav>
+      </Nav>  
     </Navbar>
+    <hr className={styles.NavbarDivider} />
+    </>
   );
 };
 

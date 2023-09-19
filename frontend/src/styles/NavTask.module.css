@@ -1,6 +1,21 @@
 .Navbar {
     background-color: transparent !important;
-    border: solid white;
-    border-radius: 10px;
-    margin-bottom: 10px;
 }
+
+.Input {
+    background: #ffffff;
+    border: 1px solid #6d76c2;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #7177a1;
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .NavbarDivider {
+    height: 4px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.286);
+    border-radius: 3px;
+  }
