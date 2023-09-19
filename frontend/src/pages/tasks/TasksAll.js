@@ -4,6 +4,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import TaskListItem from "../../components/TaskListItem";
 import NavTask from "../../components/NavTask";
+import NoResultsError from "../../components/NoResultsError";
 
 /*
  * TasksAll (Parent Component):
@@ -14,13 +15,12 @@ import NavTask from "../../components/NavTask";
  * - Fetches and displays the list of tasks.
  * - Allows the deletion of tasks.
  * - Handles marking tasks as completed.
- * - Enables searching for tasks based on user input.
+ * - Enables filtering tasks based on search.
  */
 
 function TasksAll() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredTasks, setFilteredTasks] = useState([]);
   const currentUser = useCurrentUser();
 
   useEffect(() => {
@@ -62,45 +62,38 @@ function TasksAll() {
     }
   };
 
-  
-  const handleSearch = async () => {
-    // Handle task search
-    try {
-      const response = await axiosReq.get(`/tasks/?search=${searchQuery}`);
-      const searchResults = response.data.results;
-      setFilteredTasks(searchResults);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const filteredTasks = tasks.filter((task) => {
+    // Filter tasks based on searchQuery
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    const lowerCaseTitle = task.title.toLowerCase();
+    const lowerCaseDescription = task.description.toLowerCase();
+    return (
+      lowerCaseTitle.includes(lowerCaseQuery) ||
+      lowerCaseDescription.includes(lowerCaseQuery)
+    );
+  });
 
   return (
     <Container>
       <NavTask
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        onSearch={handleSearch}
+      searchQuery={searchQuery}
+      setSearchQuery={setSearchQuery}
       />
       <Row className="mt-4">
         <Col>
           <ListGroup>
-            {filteredTasks.length > 0
-              ? filteredTasks.map((task) => (
-                  <TaskListItem
-                    key={task.id}
-                    task={task}
-                    onDelete={onDelete}
-                    onMarkAsCompleted={markAsCompleted}
-                  />
-                ))
-              : tasks.map((task) => (
-                  <TaskListItem
-                    key={task.id}
-                    task={task}
-                    onDelete={onDelete}
-                    onMarkAsCompleted={markAsCompleted}
-                  />
-                ))}
+            {filteredTasks.length > 0 ? (
+              filteredTasks.map((task) => (
+                <TaskListItem
+                  key={task.id}
+                  task={task}
+                  onDelete={onDelete}
+                  onMarkAsCompleted={markAsCompleted}
+                />
+              ))
+            ) : (
+              <NoResultsError />
+            )}
           </ListGroup>
         </Col>
       </Row>
