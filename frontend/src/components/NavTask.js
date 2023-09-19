@@ -10,31 +10,23 @@ import { Link } from "react-router-dom";
  * 
  * Responsibilities:
  * - Allow users to search for tasks using a search input field.
- * - Handle user input in the search field and trigger a search when submitted.
  */
 
-const NavTask = ({ searchQuery, setSearchQuery, onSearch }) => {
+const NavTask = ({ searchQuery, setSearchQuery }) => {
   // Handle changes in the search input field
   const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleFormSubmit = async (event) => {
-    // Handle the search form submission
-    event.preventDefault(); 
-    onSearch();
-    // Invokes the handleSearch function from the parent component (TasksAll)
+    const value = event.target.value;
+    setSearchQuery(value);
   };
 
   return (
     <Navbar expand="lg" className={styles.Navbar}>
-      <Nav className="mr-auto">
+            <Nav className="mr-auto">
         <Button className={btnStyles.CreateTask}>
           <Link to="/task/create">Create New Task</Link>
         </Button>
       </Nav>
       <Nav className="ml-auto">
-        <Form inline onSubmit={handleFormSubmit}>
           <FormControl
             type="text"
             placeholder="Search"
@@ -43,10 +35,6 @@ const NavTask = ({ searchQuery, setSearchQuery, onSearch }) => {
             onChange={handleInputChange}
             size="sm"
           />
-          <Button variant="outline-light" type="submit" size="sm">
-            Search
-          </Button>
-        </Form>
       </Nav>
       <Nav className="ml-auto">
         <NavDropdown title="Filter by Priority" id="basic-nav-dropdown">
