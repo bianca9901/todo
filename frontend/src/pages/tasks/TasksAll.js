@@ -21,20 +21,22 @@ import NoResultsError from "../../components/NoResultsError";
 function TasksAll() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [orderBy, setOrderBy] = useState("-created_at");
   const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axiosReq.get("/tasks/");
+        const response = await axiosReq.get(`/tasks/?ordering=${orderBy}`);
         setTasks(response.data.results);
       } catch (error) {
         console.log(error);
       }
     };
-
+  
     fetchTasks();
-  }, []);
+  }, [orderBy]);
+  
 
   
   const onDelete = async (taskId) => {
@@ -78,6 +80,8 @@ function TasksAll() {
       <NavTask
       searchQuery={searchQuery}
       setSearchQuery={setSearchQuery}
+      orderBy={orderBy}
+      setOrderBy={setOrderBy}
       />
       <Row className="mt-4">
         <Col>

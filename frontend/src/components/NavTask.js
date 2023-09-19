@@ -12,11 +12,15 @@ import { Link } from "react-router-dom";
  * - Allow users to search for tasks using a search input field.
  */
 
-const NavTask = ({ searchQuery, setSearchQuery }) => {
-  // Handle changes in the search input field
+const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
+
   const handleInputChange = (event) => {
     const value = event.target.value;
     setSearchQuery(value);
+  };
+
+  const handleOrderByChange = (value) => {
+    setOrderBy(value);
   };
 
   return (
@@ -43,8 +47,16 @@ const NavTask = ({ searchQuery, setSearchQuery }) => {
           <NavDropdown.Item href="#action/3.3">Low</NavDropdown.Item>
         </NavDropdown>
         <NavDropdown title="Order by" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/4.1">Priority</NavDropdown.Item>
-          <NavDropdown.Item href="#action/4.2">Created At</NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={() => handleOrderByChange("created_at")}
+          >
+            Created At (Old first)
+          </NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={() => handleOrderByChange("-created_at")}
+          >
+            Created At (New first)
+          </NavDropdown.Item>
         </NavDropdown>
       </Nav>
     </Navbar>
