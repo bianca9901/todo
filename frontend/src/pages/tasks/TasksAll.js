@@ -8,24 +8,28 @@ import NoResultsError from "../../components/NoResultsError";
 
 /*
  * TasksAll (Parent Component):
- * This component manages the list of tasks, including fetching, deleting,
- * marking as completed, and searching for tasks.
+ * This component manages the list of all tasks, including fetching, deleting,
+ * marking as completed, searching for tasks and filtering/ordering tasks and more.
  *
  * Responsibilities:
- * - Fetches and displays the list of tasks.
- * - Allows the deletion of tasks.
+ * - Fetches and displays the list of all tasks with a default display
+ *   of tasks ordered by creation date in descending order.
+ * - Handles task deletion.
  * - Handles marking tasks as completed.
  * - Enables filtering tasks based on search.
+ * - Enables ordering tasks based on user selected options.
+ * - Enables filtering tasks based on selected priority.
  */
 
 function TasksAll() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [orderBy, setOrderBy] = useState("-created_at");
+  const [orderBy, setOrderBy] = useState("-created_at"); // Default order of tasks
   const [selectedPriority, setSelectedPriority] = useState("");
   const currentUser = useCurrentUser();
 
   useEffect(() => {
+    // Fetches all tasks when component mounts
     const fetchTasks = async () => {
       try {
         const response = await axiosReq.get(
@@ -77,7 +81,7 @@ function TasksAll() {
 
   return (
     <Container>
-      <NavTask
+      <NavTask // Props to child Nav-Task
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         orderBy={orderBy}
@@ -90,7 +94,7 @@ function TasksAll() {
           <ListGroup>
             {filteredTasks.length > 0 ? (
               filteredTasks.map((task) => (
-                <TaskListItem
+                <TaskListItem // Props to child Task-List-Item
                   key={task.id}
                   task={task}
                   onDelete={onDelete}
@@ -98,7 +102,7 @@ function TasksAll() {
                 />
               ))
             ) : (
-              <NoResultsError />
+              <NoResultsError /> // No results found component
             )}
           </ListGroup>
         </Col>

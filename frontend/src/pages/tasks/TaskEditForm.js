@@ -10,6 +10,18 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
+/*
+ * TaskEditForm (Component):
+ * This component represents a form for editing an existing task.
+ *
+ * Responsibilities:
+ * - Fetches task data from the server based on the tasks ID.
+ * - Allows the user to edit the tasks title, description, priority,
+ *   category, and due date.
+ * - Handles the form submission by sending a PUT request to update the task.
+ */
+
+
 function TaskEditForm() {
   // State management
   const [dueDate, setDueDate] = useState(new Date());
@@ -27,23 +39,24 @@ function TaskEditForm() {
 
   const { title, description, priority, category } = taskData;
 
-  // Fetch task data from the server
   useEffect(() => {
+    // Fetch task data from the server
     const fetchTaskData = async () => {
       try {
         const { data } = await axiosReq.get(`/task/${id}/`);
         console.log(data);
         const { title, description, priority, category, due_date } = data;
-        const formattedDueDate = new Date(due_date).toISOString();
+        const formattedDueDate = new Date(due_date).toISOString(); // Convert the retrieved due_date to ISO format.
 
         setTaskData({
+        // Update the state with the retrieved task data and formatted due_date
           title,
           description,
           priority,
           category,
-          due_date: formattedDueDate,
+          due_date,
         });
-        setDueDate(new Date(formattedDueDate));
+        setDueDate(new Date(formattedDueDate)); // Update the due_date state for the DatePicker
       } catch (error) {
         console.log(error);
       }
@@ -52,16 +65,18 @@ function TaskEditForm() {
     fetchTaskData();
   }, [id]);
 
-  // Handle input changes
+  
   const handleChange = (event) => {
+  // Handle input changes
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
     });
   };
 
-  // Handle due date changes
+  
   const handleDateChange = (date) => {
+  // Update the state for due date and convert it to ISO format for API compatibility
     setDueDate(date);
     setTaskData({
       ...taskData,
@@ -69,8 +84,8 @@ function TaskEditForm() {
     });
   };
 
-  //Handle form submission
   const handleSubmit = async (event) => {
+  // Handle form submission
     event.preventDefault();
     const formData = new FormData();
 

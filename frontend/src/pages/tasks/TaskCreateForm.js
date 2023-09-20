@@ -10,6 +10,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
+/*
+ * TaskCreateForm (Component):
+ * This component represents a form for creating a new task.
+ *
+ * Responsibilities:
+ * - Collects user input for creating a new task, including title, description,
+ *   priority, category, and due date.
+ * - Handles the form submission by sending a POST request to create the task.
+ */
+
+
 function TaskCreateForm() {
   // State management
   const [dueDate, setDueDate] = useState(new Date());
@@ -27,16 +38,18 @@ function TaskCreateForm() {
 
   const { title, description, priority, category } = taskData;
 
-  // Handle input changes
+  
   const handleChange = (event) => {
+  // Handle input changes
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
     });
   };
 
-  // Handle due date changes
+  
   const handleDateChange = (date) => {
+  // Update the state for due date and convert it to ISO format for API compatibility
     setDueDate(date);
     setTaskData({
       ...taskData,
@@ -44,8 +57,9 @@ function TaskCreateForm() {
     });
   };
 
-  // Handle form submission
+ 
   const handleSubmit = async (event) => {
+  // Handle form submission
     event.preventDefault();
     const formData = new FormData();
 
@@ -56,8 +70,9 @@ function TaskCreateForm() {
     formData.append("due_date", taskData.due_date);
 
     try {
+    // Send a POST request to create a new task
       await axiosReq.post("/tasks/", formData);
-      history.push("/my-tasks/");
+      history.push("/my-tasks/"); // Redirect to my-tasks after submission
     } catch (error) {
       console.log(error);
       if (error.response?.status !== 401) {

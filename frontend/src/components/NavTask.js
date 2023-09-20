@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
  * This component represents the navigation bar for task-related functionality.
  *
  * Responsibilities:
- * - Allow users to search for tasks using a search input field.
+ * - Allows users to search for tasks using a search input field.
+ * - Allows users to order tasks by creation and due date.
+ * - Allows users to filter tasks based on priority.
  */
 
 const NavTask = ({
