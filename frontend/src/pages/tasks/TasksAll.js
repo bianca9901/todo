@@ -22,24 +22,24 @@ function TasksAll() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [orderBy, setOrderBy] = useState("-created_at");
-  const [selectedPriority, setSelectedPriority] = useState("")
+  const [selectedPriority, setSelectedPriority] = useState("");
   const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axiosReq.get(`/tasks/?ordering=${orderBy}&priority=${selectedPriority}`);
+        const response = await axiosReq.get(
+          `/tasks/?ordering=${orderBy}&priority=${selectedPriority}`
+        );
         setTasks(response.data.results);
       } catch (error) {
         console.log(error);
       }
     };
-  
+
     fetchTasks();
   }, [orderBy, selectedPriority]);
-  
 
-  
   const onDelete = async (taskId) => {
     // Handle task deletion
     try {
@@ -50,7 +50,6 @@ function TasksAll() {
     }
   };
 
-  
   const markAsCompleted = async (taskId, completed) => {
     // Handle marking a task as completed
     try {
@@ -79,12 +78,12 @@ function TasksAll() {
   return (
     <Container>
       <NavTask
-      searchQuery={searchQuery}
-      setSearchQuery={setSearchQuery}
-      orderBy={orderBy}
-      setOrderBy={setOrderBy}
-      selectedPriority={selectedPriority}
-      setSelectedPriority={setSelectedPriority}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        orderBy={orderBy}
+        setOrderBy={setOrderBy}
+        selectedPriority={selectedPriority}
+        setSelectedPriority={setSelectedPriority}
       />
       <Row className="mt-4">
         <Col>

@@ -36,14 +36,18 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
   return (
     <Card className={`${styles.Card} ${open ? styles.expanded : ""}`}>
       <Card.Body>
-        <Card.Title className={styles.Header}> <i
+        <Card.Title className={styles.Header}>
+          {" "}
+          <i
             className={
               task.completed
                 ? "fa-regular fa-circle-check"
                 : "fa-regular fa-circle"
             }
             onClick={() => handleMarkAsCompletedClick(task.id, !task.completed)}
-          ></i>{task.title}</Card.Title>
+          ></i>
+          {task.title}
+        </Card.Title>
 
         <Card.Subtitle className="mb-2 text-muted">
           <strong>Due Date:</strong> {task.due_date}
@@ -80,7 +84,7 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
             <br />
             <strong>Completed:</strong> {task.completed ? "Yes" : "No"}
             <Card.Subtitle className="mb-2 mt-4 text-muted">
-            <strong>Created At:</strong> {task.created_at}
+              <strong>Created At:</strong> {task.created_at}
             </Card.Subtitle>
           </div>
         </Fade>
@@ -113,7 +117,6 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
           </Button>
         </Modal.Footer>
       </Modal>
-      
     </Card>
   );
 }

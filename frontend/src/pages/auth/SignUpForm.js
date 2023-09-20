@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
@@ -10,34 +10,34 @@ import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const SignUpForm = () => {
-    const [signUpData, setSignUpData] = useState({
-        username: '',
-        password1: '',
-        password2: '',
+  const [signUpData, setSignUpData] = useState({
+    username: "",
+    password1: "",
+    password2: "",
+  });
+
+  const { username, password1, password2 } = signUpData;
+
+  const [errors, setErrors] = useState({});
+
+  const history = useHistory();
+
+  const handleChange = (event) => {
+    setSignUpData({
+      ...signUpData,
+      [event.target.name]: event.target.value,
     });
+  };
 
-    const { username, password1, password2 } = signUpData;
-
-    const [ errors, setErrors ] = useState({});
-    
-    const history = useHistory();
-
-    const handleChange = (event) => {
-        setSignUpData({
-            ...signUpData,
-            [event.target.name]: event.target.value
-        });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("/dj-rest-auth/registration/", signUpData);
+      history.push("/signin");
+    } catch (err) {
+      setErrors(err.response?.data);
     }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          await axios.post("/dj-rest-auth/registration/", signUpData);
-          history.push("/signin");
-        } catch (err) {
-          setErrors(err.response?.data);
-        }
-      };
+  };
 
   return (
     <Row className={styles.Row}>
@@ -49,7 +49,7 @@ const SignUpForm = () => {
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>
               <Form.Control
-              className={styles.Input}
+                className={styles.Input}
                 type="text"
                 placeholder="Username"
                 name="username"
@@ -66,7 +66,7 @@ const SignUpForm = () => {
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
-              className={styles.Input}
+                className={styles.Input}
                 type="password"
                 placeholder="Password"
                 name="password1"
@@ -83,7 +83,7 @@ const SignUpForm = () => {
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Confirm Password</Form.Label>
               <Form.Control
-              className={styles.Input}
+                className={styles.Input}
                 type="password"
                 placeholder="Confirm Password"
                 name="password2"
@@ -97,8 +97,11 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
-            <Button className={`${btnStyles.Button} ${btnStyles.Wide}
-            ${btnStyles.Green}`} type="submit">
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Wide}
+            ${btnStyles.Green}`}
+              type="submit"
+            >
               Sign Up
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
@@ -107,14 +110,12 @@ const SignUpForm = () => {
               </Alert>
             ))}
           </Form>
-
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
           <Link className={styles.Link} to="/signin">
             Already have an account? <span>Sign in</span>
           </Link>
         </Container>
-
       </Col>
     </Row>
   );
