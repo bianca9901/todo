@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -27,6 +27,7 @@ function TaskEditForm() {
   const [dueDate, setDueDate] = useState(new Date());
   const [errors, setErrors] = useState({});
   const history = useHistory();
+  const currentUser = useCurrentUser();
   const { id } = useParams();
 
   const [taskData, setTaskData] = useState({
@@ -94,8 +95,9 @@ function TaskEditForm() {
     formData.append("due_date", taskData.due_date);
 
     try {
+      // Send a PUT request to update the task
       await axiosReq.put(`/task/${id}/`, formData);
-      history.push("/my-tasks/");
+      history.push("/my-tasks/"); // Redirects to my-tasks after submission
     } catch (error) {
       console.log(error);
       if (error.response?.status !== 401) {
