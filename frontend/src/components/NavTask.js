@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
  * - Allow users to search for tasks using a search input field.
  */
 
-const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
+const NavTask = ({ searchQuery, setSearchQuery, setOrderBy, setSelectedPriority }) => {
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -21,6 +21,10 @@ const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
 
   const handleOrderByChange = (value) => {
     setOrderBy(value);
+  };
+
+  const handlePriorityChange = (value) => {
+    setSelectedPriority(value);
   };
 
   return (
@@ -43,10 +47,10 @@ const NavTask = ({ searchQuery, setSearchQuery, orderBy, setOrderBy }) => {
       </Nav>
       <Nav className="ml-auto">
         <NavDropdown title="Filter by Priority" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">High</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Medium</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Low</NavDropdown.Item>
-        </NavDropdown>
+          <NavDropdown.Item onClick={() => handlePriorityChange("High")}>High</NavDropdown.Item>
+          <NavDropdown.Item onClick={() => handlePriorityChange("Medium")}>Medium</NavDropdown.Item>
+          <NavDropdown.Item onClick={() => handlePriorityChange("Low")}>Low</NavDropdown.Item>
+          </NavDropdown>
         <NavDropdown title="Order by" id="basic-nav-dropdown">
           <NavDropdown.Item
             onClick={() => handleOrderByChange("created_at")}
