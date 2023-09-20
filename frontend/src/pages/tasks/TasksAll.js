@@ -22,12 +22,13 @@ function TasksAll() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [orderBy, setOrderBy] = useState("-created_at");
+  const [selectedPriority, setSelectedPriority] = useState("")
   const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axiosReq.get(`/tasks/?ordering=${orderBy}`);
+        const response = await axiosReq.get(`/tasks/?ordering=${orderBy}&priority=${selectedPriority}`);
         setTasks(response.data.results);
       } catch (error) {
         console.log(error);
@@ -35,7 +36,7 @@ function TasksAll() {
     };
   
     fetchTasks();
-  }, [orderBy]);
+  }, [orderBy, selectedPriority]);
   
 
   
@@ -82,6 +83,8 @@ function TasksAll() {
       setSearchQuery={setSearchQuery}
       orderBy={orderBy}
       setOrderBy={setOrderBy}
+      selectedPriority={selectedPriority}
+      setSelectedPriority={setSelectedPriority}
       />
       <Row className="mt-4">
         <Col>
