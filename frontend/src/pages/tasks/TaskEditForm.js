@@ -46,17 +46,15 @@ function TaskEditForm() {
         const { data } = await axiosReq.get(`/task/${id}/`);
         console.log(data);
         const { title, description, priority, category, due_date } = data;
-        const formattedDueDate = new Date(due_date).toISOString(); // Convert the retrieved due_date to ISO format.
 
         setTaskData({
-        // Update the state with the retrieved task data and formatted due_date
+        // Update the state with the retrieved task data
           title,
           description,
           priority,
           category,
           due_date,
         });
-        setDueDate(new Date(formattedDueDate)); // Update the due_date state for the DatePicker
       } catch (error) {
         console.log(error);
       }
