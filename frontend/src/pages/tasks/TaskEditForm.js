@@ -19,6 +19,11 @@ import { axiosReq } from "../../api/axiosDefaults";
  * - Allows the user to edit the tasks title, description, priority,
  *   category, and due date.
  * - Handles the form submission by sending a PUT request to update the task.
+ * 
+ * Additional Information:
+ * A note on due date: the due date is converted to ISO format for API
+ * compatibility and displayed in a nice format by the DatePicker,
+ * therefore the conversions.
  */
 
 
@@ -54,7 +59,7 @@ function TaskEditForm() {
           description,
           priority,
           category,
-          due_date,
+          due_date: new Date(due_date).toISOString(), // Convert to ISO format
         });
       } catch (error) {
         console.log(error);
@@ -93,6 +98,7 @@ function TaskEditForm() {
     formData.append("priority", priority);
     formData.append("category", category);
     formData.append("due_date", taskData.due_date);
+    // ^ Send the existing duedate as original value if no new due date is set
 
     try {
       // Send a PUT request to update the task
