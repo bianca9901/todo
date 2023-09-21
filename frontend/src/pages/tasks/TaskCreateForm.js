@@ -72,7 +72,7 @@ function TaskCreateForm() {
     try {
     // Send a POST request to create a new task
       await axiosReq.post("/tasks/", formData);
-      history.push("/my-tasks/"); // Redirect to my-tasks after submission
+      history.push("/tasks/"); // Redirect to tasks after submission
     } catch (error) {
       console.log(error);
       if (error.response?.status !== 401) {

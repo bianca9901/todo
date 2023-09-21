@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/task/create" render ={() => <TaskCreateForm/>}/>
           <Route exact path="/task/:id/edit" render ={() => <TaskEditForm/>}/>
-          <Route exact path="/my-tasks/" render ={() => <TasksAll/>}/>
+          <Route exact path="/tasks/" render ={() => <TasksAll/>}/>
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Container>
