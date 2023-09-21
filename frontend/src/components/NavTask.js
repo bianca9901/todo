@@ -19,6 +19,7 @@ const NavTask = ({
   setSearchQuery,
   setOrderBy,
   setSelectedPriority,
+  selectedPriority,
 }) => {
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -31,6 +32,10 @@ const NavTask = ({
 
   const handlePriorityChange = (value) => {
     setSelectedPriority(value);
+  };
+
+  const clearPriorityFilter = () => {
+    setSelectedPriority("");
   };
 
   return (
@@ -79,6 +84,18 @@ const NavTask = ({
               Due Date (Descending)
             </NavDropdown.Item>
           </NavDropdown>
+          {selectedPriority && (
+            <a
+              onClick={clearPriorityFilter}
+              role="button"
+              aria-label="Clear priority filters"
+              className={styles.ClearFilter}
+            >
+              <i
+                className={`fa-solid fa-rotate-left ${styles.ClearFilterIcon}`}
+              ></i>
+            </a>
+          )}
         </Nav>
       </Navbar>
       <hr className={styles.NavbarDivider} />
