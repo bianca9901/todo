@@ -5,6 +5,7 @@ import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import TaskListItem from "../../components/TaskListItem";
 import NavTask from "../../components/NavTask";
 import NoResultsError from "../../components/NoResultsError";
+import Asset from "../../components/Asset";
 
 /*
  * TasksAll (Parent Component):
@@ -26,6 +27,7 @@ function TasksAll() {
   const [searchQuery, setSearchQuery] = useState("");
   const [orderBy, setOrderBy] = useState("-created_at"); // Default order of tasks
   const [selectedPriority, setSelectedPriority] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const currentUser = useCurrentUser();
 
   useEffect(() => {
@@ -36,8 +38,10 @@ function TasksAll() {
           `/tasks/?ordering=${orderBy}&priority=${selectedPriority}`
         );
         setTasks(response.data.results);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
+        setIsLoading(false);
       }
     };
 
@@ -91,6 +95,9 @@ function TasksAll() {
       />
       <Row className="mt-4">
         <Col>
+        {isLoading ? ( // Displays a spinner when tasks are being fetched
+            <Asset spinner message="Loading tasks..." />
+          ) : (
           <ListGroup>
             {filteredTasks.length > 0 ? (
               filteredTasks.map((task) => (
@@ -105,7 +112,8 @@ function TasksAll() {
               <NoResultsError /> // No results found component
             )}
           </ListGroup>
-        </Col>
+          )}
+        </Col>  
       </Row>
     </Container>
   );
