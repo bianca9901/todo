@@ -96,7 +96,7 @@ function TasksAll() {
       <Row className="mt-4">
         <Col>
         {isLoading ? ( // Displays a spinner when tasks are being fetched
-            <Asset spinner message="Loading tasks..." />
+            <Asset spinner message="Loading your tasks..." />
           ) : (
           <ListGroup>
             {filteredTasks.length > 0 ? (
