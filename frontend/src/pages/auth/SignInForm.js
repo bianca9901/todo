@@ -103,7 +103,7 @@ const SignInForm = () => {
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signup">
+          <Link className={styles.Link} to="/signup/">
             Don't have an account? <span>Sign up</span>
           </Link>
         </Container>

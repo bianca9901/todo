@@ -34,7 +34,7 @@ const NavBar = () => {
       </NavLink>
 
       <NavLink
-        to={`/profiles/${currentUser?.profile_id}`}
+        to={`/profiles/${currentUser?.profile_id}/`}
         onClick={() => {}}
         className={styles.NavLink}
       >
