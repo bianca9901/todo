@@ -16,8 +16,7 @@ import { axiosReq } from "../../api/axiosDefaults";
  *
  * Responsibilities:
  * - Fetches task data from the server based on the tasks ID.
- * - Allows the user to edit the tasks title, description, priority,
- *   category, and due date.
+ * - Allows the user to edit the tasks title, description, priority and due date.
  * - Handles the form submission by sending a PUT request to update the task.
  * 
  * Additional Information:
@@ -39,11 +38,10 @@ function TaskEditForm() {
     title: "",
     description: "",
     priority: "",
-    category: "",
     due_date: "",
   });
 
-  const { title, description, priority, category } = taskData;
+  const { title, description, priority, } = taskData;
 
   useEffect(() => {
     // Fetch task data from the server
@@ -51,14 +49,13 @@ function TaskEditForm() {
       try {
         const { data } = await axiosReq.get(`/task/${id}/`);
         console.log(data);
-        const { title, description, priority, category, due_date } = data;
+        const { title, description, priority, due_date } = data;
 
         setTaskData({
         // Update the state with the retrieved task data
           title,
           description,
           priority,
-          category,
           due_date: new Date(due_date).toISOString(), // Convert to ISO format
         });
       } catch (error) {
@@ -96,7 +93,6 @@ function TaskEditForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("priority", priority);
-    formData.append("category", category);
     formData.append("due_date", taskData.due_date);
     // ^ Send the existing duedate as original value if no new due date is set
 
@@ -152,15 +148,6 @@ function TaskEditForm() {
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </Form.Control>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Category</Form.Label>
-            <Form.Control
-              type="text"
-              name="category"
-              value={category}
-              onChange={handleChange}
-            />
           </Form.Group>
           <Form.Group>
             <Form.Label>Due Date</Form.Label>

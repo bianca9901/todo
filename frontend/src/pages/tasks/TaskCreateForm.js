@@ -16,7 +16,7 @@ import { axiosReq } from "../../api/axiosDefaults";
  *
  * Responsibilities:
  * - Collects user input for creating a new task, including title, description,
- *   priority, category, and due date.
+ *   priority and due date.
  * - Handles the form submission by sending a POST request to create the task.
  */
 
@@ -32,11 +32,10 @@ function TaskCreateForm() {
     title: "",
     description: "",
     priority: "",
-    category: "",
     due_date: "",
   });
 
-  const { title, description, priority, category } = taskData;
+  const { title, description, priority, } = taskData;
 
   
   const handleChange = (event) => {
@@ -66,7 +65,6 @@ function TaskCreateForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("priority", priority);
-    formData.append("category", category);
     formData.append("due_date", taskData.due_date);
 
     try {
@@ -121,15 +119,6 @@ function TaskCreateForm() {
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </Form.Control>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Category</Form.Label>
-            <Form.Control
-              type="text"
-              name="category"
-              value={category}
-              onChange={handleChange}
-            />
           </Form.Group>
           <small className="text-muted">
             A due date helps you stay organized! If you don't choose one, we'll

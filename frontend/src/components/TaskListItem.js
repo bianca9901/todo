@@ -78,8 +78,6 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
             <br />
             <strong>Priority:</strong> {task.priority}
             <br />
-            <strong>Category:</strong> {task.category}
-            <br />
             <strong>Description:</strong> {task.description}
             <br />
             <strong>Completed:</strong> {task.completed ? "Yes" : "No"}

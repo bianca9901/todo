@@ -13,8 +13,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ['id', 'owner', 'is_owner', 'created_at', 'updated_at', 'title',
-                  'description', 'due_date', 'completed', 'priority',
-                  'category',]
+                  'description', 'due_date', 'completed', 'priority', ]
         
         read_only_fields = ['owner']
         
