@@ -9,6 +9,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import NotAuthenticated from "../../components/NotAuthenticated";
 
 /*
  * TaskEditForm (Component):
@@ -18,13 +19,12 @@ import { axiosReq } from "../../api/axiosDefaults";
  * - Fetches task data from the server based on the tasks ID.
  * - Allows the user to edit the tasks title, description, priority and due date.
  * - Handles the form submission by sending a PUT request to update the task.
- * 
+ *
  * Additional Information:
  * A note on due date: the due date is converted to ISO format for API
  * compatibility and displayed in a nice format by the DatePicker,
  * therefore the conversions.
  */
-
 
 function TaskEditForm() {
   // State management
@@ -41,7 +41,7 @@ function TaskEditForm() {
     due_date: "",
   });
 
-  const { title, description, priority, } = taskData;
+  const { title, description, priority } = taskData;
 
   useEffect(() => {
     // Fetch task data from the server
@@ -52,7 +52,7 @@ function TaskEditForm() {
         const { title, description, priority, due_date } = data;
 
         setTaskData({
-        // Update the state with the retrieved task data
+          // Update the state with the retrieved task data
           title,
           description,
           priority,
@@ -66,18 +66,16 @@ function TaskEditForm() {
     fetchTaskData();
   }, [id]);
 
-  
   const handleChange = (event) => {
-  // Handle input changes
+    // Handle input changes
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
     });
   };
 
-  
   const handleDateChange = (date) => {
-  // Update the state for due date and convert it to ISO format for API compatibility
+    // Update the state for due date and convert it to ISO format for API compatibility
     setDueDate(date);
     setTaskData({
       ...taskData,
@@ -86,7 +84,7 @@ function TaskEditForm() {
   };
 
   const handleSubmit = async (event) => {
-  // Handle form submission
+    // Handle form submission
     event.preventDefault();
     const formData = new FormData();
 
@@ -109,66 +107,72 @@ function TaskEditForm() {
   };
 
   return (
-    <Card className={styles.Card}>
-      <Card.Body>
-        <h1 className={styles.Header}>edit task</h1>
-        <Form onSubmit={handleSubmit}>
-          {errors.message && (
-            <div className="text-danger">{errors.message}</div>
-          )}
-          <Form.Group>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              type="text"
-              name="title"
-              value={title}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              name="description"
-              value={description}
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Priority</Form.Label>
-            <Form.Control
-              as="select"
-              name="priority"
-              value={priority}
-              onChange={handleChange}
-            >
-              <option value="">Select Priority</option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </Form.Control>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Due Date</Form.Label>
-            <DatePicker
-              selected={dueDate}
-              onChange={handleDateChange}
-              showTimeSelect
-              dateFormat="yyyy-MM-dd HH:mm"
-              name="due_date"
-              className="form-control"
-            />
-          </Form.Group>
-          <Button
-            className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
-            type="submit"
-          >
-            Create Task
-          </Button>
-        </Form>
-      </Card.Body>
-    </Card>
+    <>
+      {currentUser ? (
+        <Card className={styles.Card}>
+          <Card.Body>
+            <h1 className={styles.Header}>edit task</h1>
+            <Form onSubmit={handleSubmit}>
+              {errors.message && (
+                <div className="text-danger">{errors.message}</div>
+              )}
+              <Form.Group>
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  value={title}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="description"
+                  value={description}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Priority</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="priority"
+                  value={priority}
+                  onChange={handleChange}
+                >
+                  <option value="">Select Priority</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Due Date</Form.Label>
+                <DatePicker
+                  selected={dueDate}
+                  onChange={handleDateChange}
+                  showTimeSelect
+                  dateFormat="yyyy-MM-dd HH:mm"
+                  name="due_date"
+                  className="form-control"
+                />
+              </Form.Group>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
+                type="submit"
+              >
+                Create Task
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      ) : (
+        <NotAuthenticated />
+      )}
+    </>
   );
 }
 
