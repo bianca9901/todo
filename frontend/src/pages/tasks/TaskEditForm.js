@@ -99,7 +99,7 @@ function TaskEditForm() {
     try {
       // Send a PUT request to update the task
       await axiosReq.put(`/task/${id}/`, formData);
-      history.push("/tasks/"); // Redirects to tasks after submission
+      history.push("/"); // Redirects to tasks after submission
     } catch (error) {
       console.log(error);
       if (error.response?.status !== 401) {
