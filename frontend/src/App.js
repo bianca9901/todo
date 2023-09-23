@@ -9,7 +9,6 @@ import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import TasksAll from "./pages/tasks/TasksAll";
 import TaskEditForm from "./pages/tasks/TaskEditForm";
 import MyProfile from "./pages/profile/MyProfile";
-import NotAuthenticated from "./components/NotAuthenticated";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
           <Route exact path="/task/create" render ={() => <TaskCreateForm/>}/>
           <Route exact path="/task/:id/edit" render ={() => <TaskEditForm/>}/>
           <Route exact path="/profile/" render ={() => <MyProfile/>}/>
-          <Route exact path="/noauth/" render ={() => <NotAuthenticated/>}/>
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Container>
