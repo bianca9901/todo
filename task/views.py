@@ -1,8 +1,8 @@
 from rest_framework import generics, filters
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Task
-from .serializers import TaskSerializer
+from .models import Task, Note
+from .serializers import TaskSerializer, NoteSerializer
 from drf_api.permissions import IsOwnerOnly
 
 class TaskList(generics.ListCreateAPIView):
@@ -35,3 +35,18 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     permission_classes = [IsAuthenticated, IsOwnerOnly]
     
+class NoteList(generics.ListCreateAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated, IsOwnerOnly]
+    
+    def get_queryset(self):
+        queryset = Note.objects.filter(owner=self.request.user)
+        return queryset
+    
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        
+class NoteDetail(generics.RetrieveDestroyAPIView):
+    serializer_class = NoteSerializer
+    queryset = Note.objects.all()
+    permission_classes = [IsAuthenticated, IsOwnerOnly]
