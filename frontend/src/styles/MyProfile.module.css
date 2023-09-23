@@ -1,0 +1,20 @@
+.Card {
+    background: rgb(160,158,205);
+    background: radial-gradient(circle, rgba(160,158,205,0.08869485294117652) 25%, rgba(158,218,184,0.6321122198879552) 50%, rgba(43,147,207,0.08869485294117652) 75%);
+    border: solid white;
+    border-radius: 10%;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .Header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2142b2;
+  }
