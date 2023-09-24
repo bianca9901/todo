@@ -3,6 +3,7 @@ import Spinner from "react-bootstrap/Spinner";
 import styles from "../styles/Asset.module.css";
 
 const Asset = ({ spinner, message }) => {
+  // Loading spinner animation
   return (
     <div className={`${styles.Asset} p-4`}>
       {spinner && <Spinner animation="grow" variant="light" />}

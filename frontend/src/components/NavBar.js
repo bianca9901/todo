@@ -12,13 +12,22 @@ import {
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+/*
+ * NavBar (Component):
+ * This component represents the main navigation bar.
+ *
+ * Responsibilities:
+ * - Displays navigation links and icons
+ * - Handles sign-out
+ */
+
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
+    // Handles signout
     try {
       await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
@@ -28,21 +37,20 @@ const NavBar = () => {
   };
 
   const loggedInIcons = (
+    // Icons for logged-in users
     <>
       <NavLink to="/" onClick={handleSignOut} className={styles.NavLink}>
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
 
-      <NavLink
-        to="/profile/"
-        onClick={() => {}}
-        className={styles.NavLink}
-      >
+      <NavLink to="/profile/" onClick={() => {}} className={styles.NavLink}>
         <i className="fa-regular fa-user"></i>Profile
       </NavLink>
     </>
   );
+
   const loggedOutIcons = (
+    // Icons for logged-out users
     <>
       <NavLink
         to="/signin"
