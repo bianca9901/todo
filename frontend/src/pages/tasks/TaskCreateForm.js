@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import btnStyles from "../../styles/Button.module.css";
@@ -46,7 +47,8 @@ function TaskCreateForm() {
   };
 
   const handleDateChange = (date) => {
-    // Update the state for due date and convert it to ISO format for API compatibility
+    // Update the state for due date and convert it to ISO format for API
+    //compatibility
     setDueDate(date);
     setTaskData({
       ...taskData,
@@ -67,7 +69,7 @@ function TaskCreateForm() {
     try {
       // Send a POST request to create a new task
       await axiosReq.post("/tasks/", formData);
-      history.push("/"); // Redirect to tasks after submission
+      history.push("/"); // Redirect to homepage after submission
     } catch (error) {
       console.log(error);
       if (error.response?.status !== 401) {
@@ -94,6 +96,11 @@ function TaskCreateForm() {
                   value={title}
                   onChange={handleChange}
                 />
+                {errors.title?.map((message, idx) => (
+                  <Alert key={idx} variant="warning">
+                    {message}
+                  </Alert>
+                ))}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Description</Form.Label>
@@ -135,7 +142,9 @@ function TaskCreateForm() {
                 />
               </Form.Group>
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
+                className={`${btnStyles.Button}
+                ${btnStyles.Green}
+                ${btnStyles.Wide}`}
                 type="submit"
               >
                 Create Task

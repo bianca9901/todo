@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import btnStyles from "../../styles/Button.module.css";
@@ -75,7 +76,8 @@ function TaskEditForm() {
   };
 
   const handleDateChange = (date) => {
-    // Update the state for due date and convert it to ISO format for API compatibility
+    // Update the state for due date and convert it to ISO format for API
+    //compatibility
     setDueDate(date);
     setTaskData({
       ...taskData,
@@ -97,7 +99,7 @@ function TaskEditForm() {
     try {
       // Send a PUT request to update the task
       await axiosReq.put(`/task/${id}/`, formData);
-      history.push("/"); // Redirects to tasks after submission
+      history.push("/"); // Redirects to homepage after submission
     } catch (error) {
       console.log(error);
       if (error.response?.status !== 401) {
@@ -124,6 +126,11 @@ function TaskEditForm() {
                   value={title}
                   onChange={handleChange}
                 />
+                {errors.title?.map((message, idx) => (
+                  <Alert key={idx} variant="warning">
+                    {message}
+                  </Alert>
+                ))}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Description</Form.Label>
