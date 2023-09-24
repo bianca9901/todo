@@ -113,7 +113,7 @@ function TaskCreateForm() {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Description</Form.Label>
+                <Form.Label>Priority</Form.Label>
                 <Form.Control
                   as="select"
                   name="priority"
