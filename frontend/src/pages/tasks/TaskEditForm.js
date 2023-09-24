@@ -168,7 +168,9 @@ function TaskEditForm() {
                 />
               </Form.Group>
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
+                className={`${btnStyles.Button}
+                ${btnStyles.Green}
+                ${btnStyles.Wide}`}
                 type="submit"
               >
                 Create Task
