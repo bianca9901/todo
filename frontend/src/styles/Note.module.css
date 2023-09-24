@@ -1,0 +1,25 @@
+.Card {
+    background-color: transparent !important;
+    border: solid white;
+    border-radius: 10%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .Header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 19px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2142b2;
+    margin-bottom: 10px;
+  }
+
+  .NoteDivider {
+    height: 4px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.286);
+    border-radius: 3px;
+  }
