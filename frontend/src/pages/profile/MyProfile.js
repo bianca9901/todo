@@ -12,22 +12,26 @@ import Asset from "../../components/Asset";
  * This component manages and displays the current user's profile information.
  *
  * Responsibilities:
- * - Fetches the current users profile data using the custom useCurrentUser hook.
- * - Displays user details, such as username and account creation date.
+ * - Checks if a currentUser is present and if so, it makes an API call to
+ *   fetch profile details, and then displays them.
+ * - If there is no currently logged in user, nothing will be fetched, and the
+ *   'Not Authenticated' component is displayed.
  */
 
 const MyProfile = () => {
-  const [profile, setProfile] = useState(null); //profile data intially set to null
-  const currentUser = useCurrentUser(); //get the currently logged in user
-  const [isLoading, setIsLoading] = useState(true);
+  const [profile, setProfile] = useState(null); // Profile data intially set
+  // to null.
+  const currentUser = useCurrentUser(); // Gets the currently logged in user.
+  const [isLoading, setIsLoading] = useState(true); // Spinner animation.
 
   useEffect(() => {
     if (currentUser) {
-      // Fetch the users profile data when the component mounts or when the currentuser changes
+      // If there is a user it fetches profile data when the component mounts
       axiosReq
         .get(`/profiles/${currentUser.profile_id}/`)
         .then((response) => {
-          setProfile(response.data); // Update the profile state with the fetched data
+          setProfile(response.data); // Update the profile state with fetched
+          //data.
           setIsLoading(false);
         })
         .catch((error) => {
@@ -35,18 +39,21 @@ const MyProfile = () => {
           setIsLoading(false);
         });
     }
-  }, [currentUser]); // Trigger this effect when currentUser changes
+  }, [currentUser]);
 
   return (
     <>
       {currentUser ? (
-        <Container className="d-flex flex-column justify-content-center align-items-center">
+        <Container
+          className="d-flex flex-column justify-content-center
+        align-items-center"
+        >
           <Card className={styles.Card}>
             <div>
               <Card.Header className={`${styles.Header} py-5`}>
                 Welcome to your profile, {currentUser.username}!
               </Card.Header>
-              {isLoading ? ( // Display spinner when loading
+              {isLoading ? ( // Display spinner while loading
                 <Asset spinner message="Loading your profile..." />
               ) : profile ? (
                 <>
@@ -69,7 +76,7 @@ const MyProfile = () => {
           </Card>
         </Container>
       ) : (
-        <NotAuthenticated />
+        <NotAuthenticated /> // // Not an authenticated user component
       )}
     </>
   );
