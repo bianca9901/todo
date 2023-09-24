@@ -3,6 +3,16 @@ import cartoon from "../assets/cartoon.png";
 import { Card, Container } from "react-bootstrap";
 import styles from "../styles/NotAuthenticated.module.css";
 
+/*
+ * Not Authenticated (Component):
+ * This component is displayed when the user is not authenticated.
+ * 
+ * Responsibilities:
+ * - Landing page for users who are not authenticated.
+ * - Serves as a default for protected routes.
+ *
+ */
+
 const NotAuthenticated = () => {
   return (
     <Container

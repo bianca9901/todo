@@ -2,6 +2,12 @@ import React from "react";
 import { Card, Container } from "react-bootstrap";
 import styles from "../styles/NoResultsError.module.css";
 
+/*
+ * No Results Error (Component):
+ * This component is displayed when there are no search results found.
+ *
+ */
+
 const NoResultsError = () => {
   return (
     <Container className="d-flex justify-content-center align-items-center">
