@@ -22,7 +22,6 @@
 
 .Danger {
   background-color: #f0080885;
-  color: rgb(73, 73, 144);
   font-size: 15px;
 }
 
@@ -72,7 +71,7 @@
 }
 
 .Edit:hover:active {
-  background-color: #1758c0df !important;
+  background-color: #ffffffdf !important;
 }
 
 .Edit:hover {
@@ -93,6 +92,24 @@
 }
 
 .CreateTask:hover {
+  background-color: #925acfaa;
+  color: #ffffff;
+}
+
+.CreateNote {
+  background-color: #c265f59d;
+  color: white;
+  font-size: 15px;
+  padding: 4px 10px;
+  border-color: #6704e014;
+  margin-top: 10px;
+}
+
+.CreateNote:hover:active {
+  background-color: #904adbdf !important;
+}
+
+.CreateNote:hover {
   background-color: #925acfaa;
   color: #ffffff;
 }
