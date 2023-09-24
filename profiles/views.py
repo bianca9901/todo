@@ -6,11 +6,12 @@ from drf_api.permissions import IsOwnerOnly
 from rest_framework import permissions
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
-    """ Retrieve & Update a user's profile.
-    This allows a user to perform these operations on their
-    own profile. Note, this makes users private and not visible
-    to other users. Will update these permissions if I have time to 
-    make user2user interactions a feauture.
+    """Retrieve user's profile.
+    This view allows users to view their profile, including their username and
+    account registration date. User profile updates are not a feature due
+    to time constraints. Note, users accounts are private and not visible to
+    other users. These permissions will be updated in the future to support
+    user-to-user interactions.
     """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
