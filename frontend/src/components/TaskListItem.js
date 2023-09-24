@@ -4,13 +4,19 @@ import styles from "../styles/TaskListItem.module.css";
 import btnStyles from "../styles/Button.module.css";
 import { Link } from "react-router-dom";
 
-/* TaskListItem (Child Component):
-- Renders individual task items.
--Handles the display of task details.
--Provides options to delete a task.
--Provides an option to mark a task as completed.
-Manages its own state for:
-- Showing/hiding task details & The deletion confirmation modal. */
+/* 
+* Task List Item (Child Component):
+*
+* Responsibilities:
+* - Render individual task items.
+* - Handle the display of task details.
+* - Provide options to delete a task.
+* - Provide an option to mark a task as completed.
+*
+*  Manages its own state for:
+* - 'open': Manages whether task details should be shown or hidden.
+* - 'showConfirmationModal': Manages the deletion confirmation modal.
+*/
 
 function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
   const [open, setOpen] = useState(false);
@@ -22,7 +28,8 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
   };
 
   const confirmDelete = () => {
-    // Executes the task deletion when the "Delete" button in the modal is clicked.
+    /* Executes the task deletion when the "Delete" button in the modal
+     is clicked. */
     onDelete(task.id);
     // Invokes the onDelete function from parent component (TasksAll)
     setShowConfirmationModal(false); //Closes the deletion modal
@@ -62,7 +69,7 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
         </Button>
 
         <Button
-          //Delete button in task item that shows modal
+          // Delete button in task item that shows modal
           className={`${btnStyles.Button} ${btnStyles.Danger}`}
           onClick={handleDeleteClick}
         >
@@ -107,7 +114,7 @@ function TaskListItem({ task, onDelete, onMarkAsCompleted }) {
           </Button>
 
           <Button
-            //Delete button in modal that deletes task
+            // Delete button in modal that deletes the task
             className={`${btnStyles.Button} ${btnStyles.Danger}`}
             onClick={confirmDelete}
           >

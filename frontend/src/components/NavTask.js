@@ -9,9 +9,10 @@ import { Link } from "react-router-dom";
  * This component represents the navigation bar for task-related functionality.
  *
  * Responsibilities:
- * - Allows users to search for tasks using a search input field.
- * - Allows users to order tasks by creation and due date.
- * - Allows users to filter tasks based on priority.
+ * - Allow users to search for tasks using a search input field.
+ * - Allow users to order tasks by creation and due date.
+ * - Allow users to filter tasks based on priority.
+ * - Provide a button to clear priority filters.
  */
 
 const NavTask = ({
@@ -22,20 +23,24 @@ const NavTask = ({
   selectedPriority,
 }) => {
   const handleInputChange = (event) => {
+    // Handles input change in the search field
     const value = event.target.value;
     setSearchQuery(value);
   };
 
   const handleOrderByChange = (value) => {
+    // Handles changing the order of tasks
     setOrderBy(value);
   };
 
   const handlePriorityChange = (value) => {
+    // Handles changing the priority filter
     setSelectedPriority(value);
   };
 
   const clearPriorityFilter = () => {
-    setSelectedPriority("");
+    // Clears the priority filter
+    setSelectedPriority(""); 
   };
 
   return (
