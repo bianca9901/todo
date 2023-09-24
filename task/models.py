@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 class Task(models.Model):
-    """ Represents a task associated with a user """
+    # Represents a task associated with a user
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -22,7 +22,7 @@ class Task(models.Model):
 
 
 class Note(models.Model):
-    """ Represents a note associated with a user """
+    # Represents a note associated with a user
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
