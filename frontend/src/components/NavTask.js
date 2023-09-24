@@ -40,7 +40,7 @@ const NavTask = ({
 
   const clearPriorityFilter = () => {
     // Clears the priority filter
-    setSelectedPriority(""); 
+    setSelectedPriority("");
   };
 
   return (
@@ -90,16 +90,13 @@ const NavTask = ({
             </NavDropdown.Item>
           </NavDropdown>
           {selectedPriority && (
-            <a
+            <span
               onClick={clearPriorityFilter}
-              role="button"
+              className={styles.ClearFilterIcon}
               aria-label="Clear priority filters"
-              className={styles.ClearFilter}
             >
-              <i
-                className={`fa-solid fa-rotate-left ${styles.ClearFilterIcon}`}
-              ></i>
-            </a>
+              <i className={`fa-solid fa-rotate-left`}></i>
+            </span>
           )}
         </Nav>
       </Navbar>
