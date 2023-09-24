@@ -1,5 +1,9 @@
 import React from "react";
-import { FormControl, Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import Navbar from "react-bootstrap/NavBar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
 import btnStyles from "../styles/Button.module.css";
 import styles from "../styles/NavTask.module.css";
 import { Link } from "react-router-dom";

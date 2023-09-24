@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Row, Col, ListGroup } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ListGroup from "react-bootstrap/ListGroup";
 import TaskListItem from "../../components/TaskListItem";
 import NavTask from "../../components/NavTask";
 import NoResultsError from "../../components/NoResultsError";

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import cartoons from "../../assets/cartoons.png";

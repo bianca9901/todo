@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container, Form, Button } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container"
 import { axiosReq } from "../api/axiosDefaults";
 import styles from "../styles/Note.module.css";
 import btnStyles from "../styles/Button.module.css";

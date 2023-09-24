@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Container } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container"
 import styles from "../styles/NoTasks.module.css";
 
 /*

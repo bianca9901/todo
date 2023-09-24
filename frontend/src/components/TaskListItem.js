@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Card, Button, Fade, Modal } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Fade from "react-bootstrap/Fade"
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import styles from "../styles/TaskListItem.module.css";
 import btnStyles from "../styles/Button.module.css";
 import { Link } from "react-router-dom";

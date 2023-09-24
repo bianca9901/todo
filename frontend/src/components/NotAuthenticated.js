@@ -1,6 +1,7 @@
 import React from "react";
 import cartoon from "../assets/cartoon.png";
-import { Card, Container } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container"
 import styles from "../styles/NotAuthenticated.module.css";
 
 /*
