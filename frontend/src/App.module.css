@@ -41,20 +41,16 @@
     color: #6483e0;
   }
 
-  input[type="file"] {
-    display: none;
-  }
-
   /* scrollbar */
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
 }
 *::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #47e3ff36;
 }
 *::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #c365dd91;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #b45de367;
 }
