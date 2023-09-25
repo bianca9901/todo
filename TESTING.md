@@ -3,10 +3,13 @@
 ## Quality assurance
 
 ### JavaScript
-**ESLint was used from the beginning in this workspace, it immediatly identifies potential errors, that I could fix right away. It helped me keep my code clean.**
+
+**ESLint was used from the beginning in this workspace, it immediately identifies potential errors, that I could fix right away. It helped me keep my code clean.**
+
 ![ESlint](documentation/eslint.png)
 
-**I used VSCode and utilized Microsofts ESLint extension.**
+**I used VSCode and utilized Microsoft ESLint extension.**
+
 ![ESlint Microsoft](documentation/microsoft-eslint.png)
 
 ### Python
@@ -17,19 +20,19 @@
 
 ### CSS
 
-**CSS was validated by direct input on every css file at the official [Jigsaw](https://jigsaw.w3.org/css-validator/) website and no errors were found.**
+**CSS was validated by direct input on every CSS file at the official [Jigsaw](https://jigsaw.w3.org/css-validator/) website and no errors were found.**
 
 ![css validator](documentation/jigsaw.png)
 
 
 ## Manual testing
 
-### Testing for creating task:
+### Testing for creating a task:
 
 | Test | Steps | Expected Result | Tested | Passed |
 | ---- | ----- | --------------- | ------ | ------ |
-| Click create task | Click the "Create Task" button. | User should be redirected to the task creation form. | Yes | Yes |
-| The task creation form | The task creation form should render properly displaying a text field for the title and description, and a selection box for priority, and a datetime field. | Form should render properly.| Yes | Yes |
+| Click Create Task | Click the "Create Task" button. | User should be redirected to the task creation form. | Yes | Yes |
+| The task creation form | The task creation form should render properly displaying a text field for the title and description, a selection box for priority, and a datetime field. | Form should render properly.| Yes | Yes |
 | Submitting form without typing a title | Submit the form without typing a title. | An error message should appear, preventing submission. | Yes | Yes |
 | If writing a title (and/or) filling in other fields | Enter a title and other fields and submit the form. | User should be redirected to the home page and see their task and task information. | Yes | Yes |
 ---
@@ -76,26 +79,26 @@
 | Test | Steps | Expected Result | Tested | Passed |
 | ---- | ----- | --------------- | ------ | ------ |
 | Clicking "Order by" | Click on "Filter by Priority" to show the options. | A dropdown with ordering options should appear. | Yes | Yes |
-| Selecting "Created At" ascending order. | Select "Created at" ascending order | Tasks should be reordered by creation date in ascending order. | Yes | Yes |
-| Selecting "Created At" descending order. | Select "Created at" descending order | Tasks should be reordered by creation date in descending order. | Yes | Yes |
-| Selecting "Due Date" ascending order. | Select "Due Date" ascending order | Tasks should be reordered by due date date in ascending order. | Yes | Yes |
-| Selecting "Due Date" descending order. | Select "Due Date" descending order | Tasks should be reordered by due date date in descending order. | Yes | Yes |
+| Selecting "Created At" in ascending order. | Select "Created at" in ascending order | Tasks should be reordered by creation date in ascending order. | Yes | Yes |
+| Selecting "Created At" in descending order. | Select "Created at" in descending order | Tasks should be reordered by creation date in descending order. | Yes | Yes |
+| Selecting "Due Date" in ascending order. | Select "Due Date" in ascending order | Tasks should be reordered by the due date in ascending order. | Yes | Yes |
+| Selecting "Due Date" in descending order. | Select "Due Date" in descending order | Tasks should be reordered by the due date in descending order. | Yes | Yes |
 ---
 
-### Testing for marking task as completed/uncompleted:
+### Testing for marking tasks as completed/uncompleted:
 
 | Test | Steps | Expected Result | Tested | Passed |
 | ---- | ----- | --------------- | ------ | ------ |
-| Marking task as completed | Click the icon to mark a task as completed | A checkmark should be filled inside the circle, and text in the details should update to Completed: Yes | Yes | Yes |
+| Marking a task as completed | Click the icon to mark a task as completed | A checkmark should be filled inside the circle, and text in the details should update to Completed: Yes | Yes | Yes |
 | Marking task as uncompleted | Click the icon checked icon on a task that is completed | The checkmark should be gone and the initial circle should be displayed and the text in the details should update to Completed: No | Yes | Yes |
 
-### Testing as a new user or as someone whom deleted all their tasks:
+### Testing as a new user or as someone who deleted all their tasks:
 | Test | Steps | Expected Result | Tested | Passed |
 | ---- | ----- | --------------- | ------ | ------ |
-| New user interface | As a newly signed up user, or someone whom deleted all their tasks |  A "You have no tasks" component should appear. | Yes | Yes |
+| New user interface | As a newly signed up user, or someone who deleted all their tasks |  A "You have no tasks" component should appear. | Yes | Yes |
 ---
 
-### Testing for creating note:
+### Testing for creating notes:
 
 | Test | Steps | Expected Result | Tested | Passed |
 | ---- | ----- | --------------- | ------ | ------ |
@@ -127,13 +130,13 @@
 | Entering a Common Password | Enter a common password. | A warning message should appear. | Yes | Yes |
 | Successful Sign Up | Enter valid details and sign up. | User should be redirected to the sign-in page | Yes | Yes |
 | Switching to sign in | In the sign-up form, click "Already have an account? Sign In" |
-User should be redirected to the sign-in page. | Yes | Yes |
+The user should be redirected to the sign-in page. | Yes | Yes |
 | Testing Sign-In | As an unauthenticated user, click the sign-in icon in the navbar | User should be redirected to the sign-in page. | Yes | Yes |
 | Sign-In form | The sign-in form should display text fields for username and password. | Form should render properly. | Yes | Yes |
-| Entering wrong credentials | Enter incorrrect credentials | An error message should appear | Yes | Yes |
+| Entering wrong credentials | Enter incorrect credentials | An error message should appear | Yes | Yes |
 | Entering correct credentials | User should be redirected to the homepage | Yes | Yes |
 | Switching to Sign-Up | In the sign-in form, click "Don't have an account? Sign Up"| User should be redirected to the sign-up page | Yes | Yes |
-| Testing Sign-Out | As a logged in user, click "Sign Out" icon | User should be redirected to the homepage without authentication. | Yes | Yes |
+| Testing Sign-Out | As a logged-in user, click the "Sign Out" icon | User should be redirected to the homepage without authentication. | Yes | Yes |
 ---
 
 ### Testing protected routes as a signed-out user
