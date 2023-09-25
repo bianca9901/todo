@@ -49,7 +49,7 @@ function TaskEditForm() {
     const fetchTaskData = async () => {
       try {
         const { data } = await axiosReq.get(`/task/${id}/`);
-        console.log(data);
+        //console.log(data);
         const { title, description, priority, due_date } = data;
 
         setTaskData({
@@ -60,7 +60,7 @@ function TaskEditForm() {
           due_date: new Date(due_date).toISOString(), // Convert to ISO format
         });
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
 
@@ -101,7 +101,7 @@ function TaskEditForm() {
       await axiosReq.put(`/task/${id}/`, formData);
       history.push("/"); // Redirects to homepage after submission
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       if (error.response?.status !== 401) {
         setErrors(error.response?.data);
       }

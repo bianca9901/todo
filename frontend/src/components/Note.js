@@ -28,7 +28,7 @@ const Note = () => {
         const response = await axiosReq.get("notes/");
         setNotes(response.data.results);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
 
@@ -44,7 +44,7 @@ const Note = () => {
       setNotes([...notes, response.data]);
       setNoteContent(""); // Clears the input field after creating a note
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -54,7 +54,7 @@ const Note = () => {
       await axiosReq.delete(`note/${noteId}/`);
       setNotes(notes.filter((note) => note.id !== noteId));
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

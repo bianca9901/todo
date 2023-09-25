@@ -71,7 +71,7 @@ function TaskCreateForm() {
       await axiosReq.post("/tasks/", formData);
       history.push("/"); // Redirect to homepage after submission
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       if (error.response?.status !== 401) {
         setErrors(error.response?.data);
       }

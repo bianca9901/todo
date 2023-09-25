@@ -32,7 +32,7 @@ const NavBar = () => {
       await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

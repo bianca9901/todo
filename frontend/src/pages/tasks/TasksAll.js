@@ -56,7 +56,7 @@ function TasksAll() {
         setTasks(response.data.results);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         setIsLoading(false);
       }
     };
@@ -70,7 +70,7 @@ function TasksAll() {
       await axiosReq.delete(`/task/${taskId}/`);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -84,7 +84,7 @@ function TasksAll() {
         )
       );
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
