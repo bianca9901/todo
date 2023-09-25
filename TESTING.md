@@ -3,10 +3,13 @@
 ## Quality assurance
 
 ### JavaScript
+
 **ESLint was used from the beginning in this workspace, it immediatly identifies potential errors, that I could fix right away. It helped me keep my code clean.**
+
 ![ESlint](documentation/eslint.png)
 
 **I used VSCode and utilized Microsofts ESLint extension.**
+
 ![ESlint Microsoft](documentation/microsoft-eslint.png)
 
 ### Python
