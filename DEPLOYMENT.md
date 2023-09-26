@@ -72,7 +72,7 @@ Pre-requisities; to make sure everything is compatible, use the same versions as
 **Step 6:** Add the following lines to ```env.py```:
 
 
-import os
+```import os ```
 
 ```os.environ.setdefault("SECRET_KEY", "Your secret key here")```
 
@@ -91,7 +91,7 @@ import os
 **Step 8:** type ``` cd frontend ``` in to go to the frontend directory.
 
 
-**Step 9:** type ```` npm install ``` to install the frontend dependencies.
+**Step 9:** type ``` npm install ``` to install the frontend dependencies.
 
 
 **Step 10:* if you make any changes to the static files, including the react files, you need to run this command. 
