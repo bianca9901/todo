@@ -175,13 +175,10 @@ Works as it should.
 ![get notes](documentation/api-testing/get-notes-no-auth.png)
 
 **Get tasks without credentials:**
-![gett tasks](documentation/api-testing/get-tasks-no-authentication.png)
+![get tasks](documentation/api-testing/get-tasks-with-no-auth.png)
 
-**Patch note without credentials:**
+**Patch task without credentials:**
 ![patch note](documentation/api-testing/patch-task-no-auth.png)
-
-**Put note without credentials:**
-![put note](documentation/api-testing/put-task-no-auth.png.png)
 
 **Delete note without credentials:**
 ![delete note](documentation/api-testing/delete-note-no-auth.png)
@@ -200,7 +197,7 @@ Works as it should.
 Works as it should.
 
 **Post a task with credentials:**
-![post tasks](documentation/api-testing/post-task.png)
+![post tasks](documentation/api-testing/post-a-task-valid.png)
 Works as it should.
 
 **Post a task without required field with credentials**
