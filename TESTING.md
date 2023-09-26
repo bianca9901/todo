@@ -153,7 +153,6 @@ The user should be redirected to the sign-in page. | Yes | Yes |
 
 All API endpoints were tested using [Postman](https://www.postman.com/). Various scenarios were explored, including cases such as providing incorrect credentials, attempting to access endpoints without authentication, submitting requests with missing required fields, thorough testing of CRUD functionality, and verifying that users could not access tasks or notes that does not belong to the authenticated user. These comprehensive tests ensured the security of the API.
 
-
 **GET: the only not protected endpoint:**
 ![get api](documentation/api-testing/get-api.png)
 Works as it should.
@@ -163,16 +162,20 @@ Works as it should.
 Works as it should.
 
 **POST: Log-in to API with valid credentials:**
-![get api](documentation/api-testing/login-get-access-token.png)
+![post auth](documentation/api-testing/login-get-access-token.png)
 Works as it should.
 
-**Get note or tasks without credentials:**
+**Get note without credentials:**
 ![get note](documentation/api-testing/get-note-no-auth.png)
-![got task](documentation/api-testing/get-task-no-auth.png)
 
-**Get notes or tasks without credentials:**
+**Get task without credentials:**
+![get task](documentation/api-testing/get-task-no-auth.png)
+
+**Get notes without credentials:**
 ![get notes](documentation/api-testing/get-notes-no-auth.png)
-![got tasks](documentation/api-testing/get-tasks-no-auth.png)
+
+**Get tasks without credentials:**
+![gett tasks](documentation/api-testing/get-tasks-no-authentication.png)
 
 **Patch note without credentials:**
 ![patch note](documentation/api-testing/patch-task-no-auth.png)
@@ -180,8 +183,10 @@ Works as it should.
 **Put note without credentials:**
 ![put note](documentation/api-testing/put-task-no-auth.png.png)
 
-**Delete note or task without credentials:**
+**Delete note without credentials:**
 ![delete note](documentation/api-testing/delete-note-no-auth.png)
+
+**Delete task without credentials:**
 ![delete task](documentation/api-testing/delete-task-no-auth.png)
 
 **Post note without credentials:**
