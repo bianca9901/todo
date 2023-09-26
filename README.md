@@ -448,6 +448,8 @@ The `profile` model represents a profile associated with a user.
 
 * [npm](https://www.npmjs.com/): was used for package manager used to install the dependencies.
 
+* [node](https://nodejs.org/en): was used for running JavaScript on the server side.
+
 * [pip3](https://pypi.org/project/pip/): was the package manager used to install the dependencies.
 
 * [Psycopg](https://pypi.org/project/psycopg2/): was used as the database adapter for Python.
