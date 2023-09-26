@@ -91,19 +91,19 @@ import os
 **Step 8:** type ``` cd frontend ``` in to go to the frontend directory.
 
 
-**Step 9:** type ```` npm install `` to install the frontend dependencies.
+**Step 9:** type ```` npm install ``` to install the frontend dependencies.
 
 
 **Step 10:* if you make any changes to the static files, including the react files, you need to run this command. 
 
-``` npm run build && rm -rf ../staticfiles/build && mv build ../staticfiles/. ``````
+``` npm run build && rm -rf ../staticfiles/build && mv build ../staticfiles/. ```
 
 If you dont want to make any changes, you can skip it.
 
 
 **Step 11** Test the project by running this command:
 
-``` python3 manage.py runserver ``````
+``` python3 manage.py runserver ```
 
 *Local Deployment done! I hope it went well.*
 
