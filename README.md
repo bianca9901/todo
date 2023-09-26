@@ -287,52 +287,6 @@ As seen underneath in "usage", the `TasksAll` aka "/" homepage, serves as the ce
 Components are organized within the src directory in the components folder, each component has an associated stylesheet in the src/styles directory, sharing the same file name as the component for convenient access.
 
 ---
-
-## Data Schema
-
-### The application `tasks` has two models that represent tasks and notes.
-
-**`tasks:`**
-
-The `tasks` model represents tasks associated with the user.
-
-Fields:
-- `owner`: The owner of the task
-- `title`: The name of the task.
-- `due_date`: The date and time the task should be completed.
-- `description`: A text field describing the task or for additional notes.
-- `completed`: A boolean representing if the task is marked as completed/uncompleted.
-- `created_at`: A timestamp to when the task was created/updated.
-- `priority`: A option field to select by "High", "Medium", or "Low".
-
-
-| Name        | Database Key | Field Type         | Validation                            |
-| ----------- | ------------ | ------------------ | ------------------------------------- |
-| owner       | owner        | ForeignKey         | to=User, on_delete=models.CASCADE     
-| created_at  | created_at   | DateTimeField     | auto_now_add=True                      |
-| updated_at  | updated_at   | DateTimeField     | auto_now=True                          |
-| title       | title        | CharField          | max_length=255                        |
-| description | description  | TextField          | blank=True, null=True                 |
-| due_date    | due_date     | DateTimeField     | default=timezone.now                   |
-| completed   | completed    | BooleanField      | default=False                          |
-| priority    | priority     | CharField          | max_length=10, choices=[("Low", "Low"), ("Medium", "Medium"),("High", "High")], blank=True, null=True |
----
-
-### Note.js
-**Description:** Note.js handles the retrieval, creation, and deletion of user notes. It renders alongside tasks, providing a quick way to write down notes.
-
-**Purpose:** To offer users a fast and straightforward method for creating and managing notes.
-
-**Usage:** Note.js is utilized within src/pages/tasks/TasksAll.
-
-![Notes](documentation/my-notes.png)
-
-
-**Folder structure**
-Components are organized within the src directory in the components folder, each component has an associated stylesheet in the src/styles directory, sharing the same file name as the component for convenient access.
-
----
-
 ## Data Schema
 
 ### The application `tasks` has two models that represent tasks and notes.
@@ -408,13 +362,12 @@ The `profile` model represents a profile associated with a user.
 ## Technologies Used
 
 ### Languages
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): was used for.
-
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS): was used to style the website.
 
 * [Python](https://www.python.org/): was used for the backend logic.
 
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript): was used for the frontend logic.
+
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS): was used to style the website.
 
 ### Frameworks and Libraries
 
