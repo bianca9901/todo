@@ -4,8 +4,7 @@
 
 ### Todo is a website designed to inspire you to be more productive. Whether you are a professional juggling work tasks or a student managing assignments, ToDo will help you stay on track with all the things you need to get done.
 
-
-ALL SCREENS IMAGE HERE
+You can explore the website by visiting it [here](https://todo-bianca-9a72e771f0e2.herokuapp.com/).
 
 **Todo Main Features:**
 
@@ -462,6 +461,8 @@ The `profile` model represents a profile associated with a user.
 * [Canva](https://www.canva.com/): was used to make the wireframe and for sourcing images.
 
 * [Css Gradient](https://cssgradient.io/) was used to make a gradient background throughout the website.
+
+* [Postman](https://www.postman.com/) was used to make tests on the API.
 
 ---
 
