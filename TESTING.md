@@ -154,87 +154,95 @@ The user should be redirected to the sign-in page. | Yes | Yes |
 All API endpoints were tested using [Postman](https://www.postman.com/). Various scenarios were explored, including cases such as providing incorrect credentials, attempting to access endpoints without authentication, submitting requests with missing required fields, thorough testing of CRUD functionality, and verifying that users could not access tasks or notes that does not belong to the authenticated user. These comprehensive tests ensured the security of the API.
 
 
-GET: the only not protected endpoint:
+**GET: the only not protected endpoint:**
 ![get api](documentation/api-testing/get-api.png)
 Works as it should.
 
-POST: Log-in to API without sending credentials:
+**POST: Log-in to API without sending credentials:**
 ![get api](documentation/api-testing/login-no-password.png)
 Works as it should.
 
-POST: Log-in to API with valid credentials:
+**POST: Log-in to API with valid credentials:**
 ![get api](documentation/api-testing/login-get-access-token.png)
 Works as it should.
 
+**Get note or tasks without credentials:**
 ![get note](documentation/api-testing/get-note-no-auth.png)
 ![got task](documentation/api-testing/get-task-no-auth.png)
 
+**Get notes or tasks without credentials:**
 ![get notes](documentation/api-testing/get-notes-no-auth.png)
 ![got tasks](documentation/api-testing/get-tasks-no-auth.png)
 
+**Patch note without credentials:**
 ![patch note](documentation/api-testing/patch-task-no-auth.png)
+
+**Put note without credentials:**
 ![put note](documentation/api-testing/put-task-no-auth.png.png)
 
+**Delete note or task without credentials:**
 ![delete note](documentation/api-testing/delete-note-no-auth.png)
 ![delete task](documentation/api-testing/delete-task-no-auth.png)
 
-
+**Post note without credentials:**
 ![post notes](documentation/api-testing/post-notes-no-auth.png)
+
+**Post task without credentials:**
 ![post tasks](documentation/api-testing/post-tasks-no-auth.png)
 
-Get all tasks:
+**Get tasks with credentials:**
 ![get tasks](documentation/api-testing/get-all-tasks.png)
 Works as it should.
 
-Post task
+**Post a task with credentials:**
 ![post tasks](documentation/api-testing/post-task.png)
 Works as it should.
 
-Post task without required field
+**Post a task without required field with credentials**
 ![post tasks without credentials](documentation/api-testing/post-task-without-req.png)
 Works as it should.
 
-Get task by id
+**Get a task by id with credentials**
 ![get task by id](documentation/api-testing/get-task-by-id.png)
 Works as it should.
 
-Delete task:
+**Delete a task with credentials:**
 ![delete task](documentation/api-testing/delete-task.png)
 Works as it should.
 
-Get task after deletion:
+** Try to Get task after deletion with credentials:**
 ![get task after deletion](documentation/api-testing/get-task-after-deletion.png)
 Works as it should.
 
-Patch as 'completed' task:
+**Patch a task as 'completed' with credentials:**
 ![patch completed task](documentation/api-testing/patch-completed-task-status.png)
 Works as it should.
 
-Put field required
+**Try to Put a task without required field with credentials:**
 ![put field required](documentation/api-testing/put-field-required.png)
 Works as it should.
 
-Put task title valid field sent:
+**Put a task with required field and with credentials:**
 ![get api](documentation/api-testing/put-task-title.png)
 Works as it should.
 
-Delete task:
+**Delete a task with credentials:**
 ![get api](documentation/api-testing/delete-task.png)
 Works as it should.
 
-Post note with required field
-![get api](documentation/api-testing/post-note-valid-req.png)
-Works as it should.
-
-Post note without required field
+**Post a note without required field with credentials:**
 ![get api](documentation/api-testing/post-note-without-req.png)
 Works as it should.
 
-Post note
+**Post a note with required field with credentials:**
+![get api](documentation/api-testing/post-note-valid-req.png)
+Works as it should.
+
+**Post a note with credentials:**
 ![get api](documentation/api-testing/post-note.png)
 Works as it should.
 
-Get note after deletion:
+**Try get a note after deletion with credentials:**
 ![get api](documentation/api-testing/get-note-after-deletion.png)
 Works as it should.
 
