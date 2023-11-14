@@ -64,12 +64,6 @@ You can explore the website by visiting it [here](https://todo-bianca-9a72e771f0
 
 ---
 ## Design
-### The design choice:
-
-**I aimed to give the website a playful yet structured style, which is in line with the purpose of the website, that is, a happy and visually pleasing place to stay productive. The many different colors together with the stricter font made my vision come to life. The layout was meant to be slightly different, (more on this in wireframe), but altogether, the layout I planned in the wireframe came to life.**
-### The color choice:
-
-**I chose this color scheme to enhance the features of the app. Purple represents creativity and inspiration, which encourages the users to brainstorm the things they aim to achieve. Blue represents trust and reliability, making it the perfect choice for an app where the users' notes and tasks should be private to them. Green associated with growth and money was the choice to promote productivity as the user tackles their tasks.**
 
 #### Main colors used:
 
@@ -128,18 +122,6 @@ RGB(143, 218, 170)
 ![Font](documentation/font.png)
 
 
-## Wireframe:
-
-![Wireframe](documentation/wireframe.png)
-
-While planning this project, I envisioned having both tasks and habits as the main features. However, given the limited timeframe, the inclusion of habits was not possible.
-
-The wireframe difference from the finished product featured a third navigation bar that would allow users to toggle between tasks and habits. The goal was to create an engaging layout where Navigation 3 would adapt to whether habits or tasks were selected in Navigation2, interchanging the options for sorting and ordering based on whether tasks or habits were selected for display. It would also have a button that would change from Create New Task to Add New Habit depending on the selection in navigation2.
-
-Although I had to set the habits feature aside for the time being, the database models for habits remain in the backend. I intend to revisit the original wireframe concept and reintroduce the habits component into the project. Due to time constraints, I introduced the 'notes' feature, which though unplanned complements the project functionality.
-
----
-
 ## Testing
 
 Please visit [this link](TESTING.md) to find test-related documentation.
@@ -149,35 +131,6 @@ Please visit [this link](TESTING.md) to find test-related documentation.
 ## Deployment
 
 Please visit [this link](DEPLOYMENT.md) to find deployment-related documentation.
-
----
-
-## Bugs and Features left to implement
-
-As mentioned in the Wireframe section, the original idea behind this project was to have tasks and habits. However, given the limited timeframe, and drawing from my experience with learning new programming languages, libraries, and frameworks within tight schedules, I realized that prioritizing habits might not be durable, and therefore, no user stories were made in the beginning while planning the project. As it turned out, my intuition was correct, including habits was not an option in the end.
-
-With limited experience in both React and Django REST framework, and a two-week timeframe, I had to deprioritize the habits feature. However, as mentioned earlier, the database models for habits remain, and I'm prepared to reintroduce this original idea.
-
-Instead of habits, I introduced the 'notes' feature as an alternative, which although it was unplanned, integrates well into the project. In the future, I will return to the original wireframe concept, and use the 'notes' component in the user's profile, prompting them to write motivational messages. These messages will be displayed between Navigation 1 and Navigation 2 in the wireframe I made.
-
-What I've learned from past experiences is that while planning is crucial, you must also recognize when it is necessary to let go of certain ideas due to time constraints. I encountered numerous bugs, which provided valuable lessons on tokens, authentication, date conversions and more. Unfortunately, these issues consumed a lot of time, preventing me from implementing the habits feature.
-
-Several areas in this project can be improved, including defensive programming for task deletion, being able to access the account when forgetting a password, refining date conversions, fixing repetitive styling, and adding some exciting features to the profile page. Some aspects need to be fixed in this project, for example occasionally it encounters an unauthorized access bug, requiring a hard refresh.
-
-As mentioned above, there are a few issues to fix, and there are several desirable additions to add.
-Thus the project is not perfect, I can happily say that I've gathered a lot more knowledge throughout this very "bugable" experience that I would not have learned if everything went smoothly.
-
-My plan after submission of the project involves firstly fixing the issues mentioned with the authorization bug hardcore refresh, adding defensive programming to task deletion, fixing repetitive styling, further modularization, and enhancing component reusability. And then adding features like habits, an improved user profile, and even user-to-user interactions for task assignment.
-
----
-
-## Project Goals
-
-With this project, I wanted to create something timeless and usable, something that anyone can use. I did not want a specific target group; I wanted this project to speak to anyone. Therefore, I went with a to-do website. This project can be used by anyone who wants to improve as a person, whether that means being more organized and structured with all tasks and notes in the same place or being more motivated to achieve their goals and dreams. My main question throughout planning and developing the project was, 'Would this be useful for the end user?' That drove my choices throughout.
-
-Secondly, I had myself in focus. What did I want to personally achieve with this project? My main goal was to gain an understanding of the React architecture, working with APIs, and Django Rest Framework. In the end, I created full CRUD functionality for tasks, and I also had time to add create, read, and delete functionality for notes. I learned about React and its components and gained insight into advanced JavaScript concepts along the way. I was also introduced to serializers, HTTP requests, and much more.
-
-In conclusion, with the final product, I can say that I learned more than I can express, but I know there is so much more to learn, and I am only at the beginning of my journey. However, in the role of a developer, you are never finished; there is always more to learn and room for improvement. Can this project improve? Yes, there is a lot of room, which is great. This project is the perfect choice to keep building on, and little by little, the code will be cleaner, and the website will be better.
 
 ---
 
@@ -418,46 +371,5 @@ The `profile` model represents a profile associated with a user.
 * [Css Gradient](https://cssgradient.io/) was used to make a gradient background throughout the website.
 
 * [Postman](https://www.postman.com/) was used to make tests on the API.
-
----
-
-## Credits
-
-### Code:
-
-* The design and functionality of the navbar drew heavy inspiration from CodeInstitute.
-
-* The custom hook, useClickOutsideToggle, was taken from CodeInstitute.
-
-* The CurrentUserContext context implementation was taken from CodeInstitute.
-
-* The profile signal handler was taken from CodeInstitute.
-
-* Certain styling elements found in App.module.css were taken from CodeInstitute.
-
-* Styling for the .Button class was influenced by CodeInstitute.
-
-* The sign-in and sign-up form structure was taken from CodeInstitute, with modifications and adjustments made to suit my project.
-
-Credit goes to this project, [Moments By Code Institute](https://github.com/Code-Institute-Solutions/moments)
-
-Thank you [Code Institute](https://codeinstitute.net), for the great learning material!
-
-### Media:
-
-All images were sourced [Canva](https://www.canva.com/).
-
-Unfortunately, links to the profiles uploading the images I used do not work.
-
-All cartoons I used were uploaded by Mia Olofsson
-
-![Cartoon](documentation/cartoon1-credits.png)
-![Cartoon](documentation/cartoon2-credits.png)
-![Cartoon](documentation/cartoon3-credits.png)
-![Cartoon](documentation/cartoon4-credits.png)
-
-The logo I used was uploaded by clelia-clelia
-
-![Logo](documentation/logo-credits.png)
 
 ---
